@@ -31,7 +31,7 @@ export const WDRoutes=()=>{
    <Route path="/documents" element={ <Documents   />}></Route>
         <Route path="/people" element={ < People   />}></Route>
                <Route path="/leave" element={ < Leave   />}></Route>
-         <Route path="/" element={ <Home   />} ></Route>
+         <Route path="/G-Rank-Frontend" element={ <Home   />} ></Route>
     <Route path="/myProfile" element={ <Profile   />}></Route>
    
         <Route path="/settings" element={ <Settings   />}></Route>

@@ -10,7 +10,7 @@ import { TLRoutes } from "./compForTL/tlInterface";
 export const TeamLead =()=>{
     return (
         <ul className="nav-links">
-          <li><Link className="myLinks" to={"G-Rank-Frontend/"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
+          <li><Link className="myLinks" to={"/G-Rank-Frontend"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
             <li><Link className="myLinks" to={"/newTask"}><span><i className="fi fi-ts-signal-stream"></i></span><span> newTask</span></Link></li>
             <li><Link className="myLinks" to={"/dueTask"}><span><i className="fi fi-ts-workflow-alt"></i></span><span>Due Task</span></Link></li>
             <li><Link className="myLinks" to={"/todo"}><span><i className="fi fi-tr-to-do"></i></span><span> To Do</span></Link></li>
@@ -25,7 +25,7 @@ export const TeamLead =()=>{
 }
 export const WebDev=()=>{
     return (<ul className="nav-links">
-                             <li><Link className="myLinks" to={"G-Rank-Frontend/"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
+                             <li><Link className="myLinks" to={"/G-Rank-Frontend"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
                               <li><Link className="myLinks" to={"/engage"}><span><i className="fi fi-ts-signal-stream"></i></span><span> Engage</span></Link></li>
                               <li><Link className="myLinks" to={"/todo"}><span><i className="fi fi-tr-to-do"></i></span><span> To Do</span></Link></li>
                               <li><Link className="myLinks" to={"/salary"}><span><i className="fi fi-ts-wallet"></i></span><span> Salary</span></Link></li>
@@ -42,7 +42,7 @@ export const CSM=()=>{
     return (<ul className="nav-links">
                     
 
-                            <li><Link className="myLinks" to={"G-Rank-Frontend/"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
+                            <li><Link className="myLinks" to={"/G-Rank-Frontend"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
                               <li><Link className="myLinks" to={"/requestForm"}><span><i className="fi fi-ts-signal-stream"></i></span><span> Request Form</span></Link></li>
                               <li><Link className="myLinks" to={"/calendar"}><span><i className="fi fi-tr-to-do"></i></span><span> Calendar</span></Link></li>
                               <li><Link className="myLinks" to={"/dueTask"}><span><i className="fi fi-ts-wallet"></i></span><span> Due Task</span></Link></li>
@@ -56,7 +56,7 @@ export const CSM=()=>{
 
 export const Admin=()=>{
     return (<ul className="nav-links">
-                                <li><Link className="myLinks" to={"G-Rank-Frontend/"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
+                                <li><Link className="myLinks" to={"/G-Rank-Frontend"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
                                  <li><Link className="myLinks" to={"/manage"}><span><i className="fi fi-tr-house-chimney"></i></span><span>Manage</span></Link></li>
                                  <li><Link className="myLinks" to={"/employees"}><span><i className="fi fi-tr-house-chimney"></i></span><span>Employees</span></Link></li>
             
