@@ -10,7 +10,7 @@ import { TLRoutes } from "./compForTL/tlInterface";
 export const TeamLead =()=>{
     return (
         <ul className="nav-links">
-          <li><Link className="myLinks" to={"/"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
+          <li><Link className="myLinks" to={"G-Rank-Frontend/"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
             <li><Link className="myLinks" to={"/newTask"}><span><i className="fi fi-ts-signal-stream"></i></span><span> newTask</span></Link></li>
             <li><Link className="myLinks" to={"/dueTask"}><span><i className="fi fi-ts-workflow-alt"></i></span><span>Due Task</span></Link></li>
             <li><Link className="myLinks" to={"/todo"}><span><i className="fi fi-tr-to-do"></i></span><span> To Do</span></Link></li>
