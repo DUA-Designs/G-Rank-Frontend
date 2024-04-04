@@ -275,7 +275,7 @@ export function App() {
       : 
       
        
-       <BrowserRouter>
+       <BrowserRouter basename="G-Rank-Frontend">
               {userPages[user["Designation"]]?userPages[user["Designation"]]:<WDRoutes/>}
  
    
