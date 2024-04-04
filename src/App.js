@@ -1,7 +1,7 @@
 import {  createRef, useEffect, useState} from "react";
 import { dots, failure, grank, loadingCircle, partner, success } from "./media";
  
-import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import { Player    } from '@lottiefiles/react-lottie-player';
 
 import {  useDispatch, useSelector   } from "react-redux";
  import { userAPI } from "./redux/counterSlice";
@@ -275,7 +275,7 @@ export function App() {
       : 
       
        
-       <BrowserRouter basename="G-Rank-Frontend">
+       <BrowserRouter basename={"https://dua-designs.github.io/G-Rank-Frontend/"}>
               {userPages[user["Designation"]]?userPages[user["Designation"]]:<WDRoutes/>}
  
    
