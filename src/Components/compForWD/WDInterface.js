@@ -16,9 +16,9 @@ import { Leave } from "./leave";
  
 
 export const WDRoutes=()=>{
-    return (<Routes>
+    return (<Routes >
          
-        <Route path="/engage" element={ <Engage  />}></Route>
+        <Route path="/engage" element={ <Engage  />} ></Route>
     
  
  
@@ -31,7 +31,7 @@ export const WDRoutes=()=>{
    <Route path="/documents" element={ <Documents   />}></Route>
         <Route path="/people" element={ < People   />}></Route>
                <Route path="/leave" element={ < Leave   />}></Route>
-         <Route path="/G-Rank-Frontend" element={ <Home   />} ></Route>
+         <Route path="/" element={ <Home   />} ></Route>
     <Route path="/myProfile" element={ <Profile   />}></Route>
    
         <Route path="/settings" element={ <Settings   />}></Route>

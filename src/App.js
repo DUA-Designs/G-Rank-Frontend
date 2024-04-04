@@ -275,7 +275,7 @@ export function App() {
       : 
       
        
-       <BrowserRouter basename={"https://dua-designs.github.io/G-Rank-Frontend/"}>
+       <BrowserRouter basename={"G-Rank-Frontend"}>
               {userPages[user["Designation"]]?userPages[user["Designation"]]:<WDRoutes/>}
  
    
