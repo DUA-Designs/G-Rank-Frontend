@@ -26,7 +26,7 @@ export function QuickAccess({page} ){
  
 
  localStorage.removeItem("sessionTime","true");
- window.location.href="/";
+ window.location.href="/G-Rank-Frontend";
    
  
   
