@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Murecho&display=swap');
+ 
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,500;1,500&family=Montserrat:ital@0;1&family=Roboto&display=swap');
 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    font-family: "Murecho", sans-serif;
-        font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Figtree", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
  
@@ -57,9 +56,7 @@ html{
    
   
  }
-  .marginTop{
-   
- }
+ 
  
  
 #empInfo ul{
@@ -86,9 +83,7 @@ html{
   font-size: 1.2rem;
 }
 #quickAccess.dynamicAccess{
-  background:white;
-  
-  
+  background:white;  
 }
 
 #quickAccess.dynamicAccess::after{
@@ -336,12 +331,12 @@ ul{
 #dayTime{
  
  margin-bottom: 1rem;
- color: #d9eeff;
+ 
 
  overflow: hidden;
- background:url(./media/cool-background-cyan.png);
- background-size: cover;
- background-repeat: no-repeat;
+ background :url(https://www.toptal.com/designers/subtlepatterns/uploads/memphis-colorful.png);
+ 
+ 
  transition: all 0.3s linear !important;
  
  
@@ -362,15 +357,17 @@ ul{
  
 .headContainer{
   width: fit-content;
-   /* background: rgba(0, 0, 0, 0.125); */
-   border: 1px solid rgba(0, 0, 0, 0.073);
+   background: white;
+ 
 }
 .quoteContainer{
-   /* background: rgba(0, 0, 0, 0.125); */
+   background: white;
  
-   border: 1px solid rgba(0, 0, 0, 0.115);
+ 
 }
- 
+.corner-right{
+  transform: translate(-30px,-30px);
+}
  
 #dayTime>div:nth-child(2){
   opacity: 0;
@@ -394,6 +391,10 @@ ul{
  
   height: 85vh;
   overflow-y: auto;
+}
+.myQuote{
+  font-weight: 500;
+  letter-spacing: 1px;
 }
  
  

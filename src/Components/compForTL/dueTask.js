@@ -4,17 +4,20 @@ import { QuickAccess } from "../quickAccess";
 import { useEffect   } from "react";
 import axios from "axios";
 import { tasksAPI } from "../../redux/dueTaskSlice";
+import { userAPI } from "../../redux/counterSlice";
  
 
 export function DueTask( ){
     const dueTasks=useSelector((state)=>state.tasks.value);
+    const user=useSelector(state=>state.user.value);
    
     const dispatch=useDispatch();
 
     async function handleTaskMove(ind)
     {
         let data=document.querySelectorAll(`.tableBody tr:nth-child(${ind+1}) td`);
-         let selectedDev=data[4].childNodes[0].value;
+         let selectedDev=data[5].childNodes[0].value;
+         
          if(selectedDev==="default"){
           alert("Please assign a dev");
           return ""};
@@ -25,14 +28,15 @@ export function DueTask( ){
         let Deadline=data[3].innerHTML;
 
 
-        const res=await axios.get(`https://g-rank-backend.onrender.com/addToActiveTasks?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}&Dev=${selectedDev}`);
-        if(res.data.exec){
-            console.log("added to new task");
-        }
+        const res=await axios.get(`https://g-rank-backend.onrender.com/addToActiveTasks?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}&Dev=${selectedDev}&id=${dueTasks[ind].id}`);
+       
+            console.log(res.data);
+             dispatch(userAPI({employeeID:user.EmployeeID}));
+        
         
 
     }
-
+ console.log(dueTasks);
     // async function getTasks(){
     //    let response=await axios.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vR4bqhRdZBrGt_fB8r0kRDdDXDuG4OHiFzL7vrlJow1NL30mKCkjwcLhQ7_MgL3_7FNQOc3uARJ8fS2/pub?output=csv');
     //    console.log(response.data);
@@ -72,15 +76,17 @@ export function DueTask( ){
             <div className="border rounded">
                 <table className="col-12 text-center  "  >
                         <thead>
+                           <th>Id</th>  
                                     <th>Task</th>                                           
                         <th>Description</th>
                         <th>Department</th>
                         <th>Deadline</th>
+                            
                         <th>Assign</th>
                          <th>Add</th>
                         </thead>
                         <tbody className="tableBody">
-                          {dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).map(key=><td>{item[key]}</td>)}<td><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select></td><td   className="p-2 addButton    " onClick={( )=>handleTaskMove(index)}><i class="fi fi-tr-square-plus"></i></td></tr>)}
+                          {dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><td>{item[key]}</td>)}<td><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select></td><td   className="p-2 addButton    " onClick={( )=>handleTaskMove(index)}><i class="fi fi-tr-square-plus"></i></td></tr>)}
 
                         </tbody>
                  

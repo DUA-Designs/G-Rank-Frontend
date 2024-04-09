@@ -14,7 +14,7 @@ export function Profile(  ){
     <div className="border rounded mt-5  infoHeader p-2"  >
     <h2 className="p-2 mb-3" >Employee Information</h2>
     <ul  className="row  ">
-       {Object.keys(user).map((item,index)=>item!=="Notification"?<li key={index}  className="col-lg-3 col-md-4  my-1"><div className="p-1"><span className="lightText">{item}</span><p>{user[item] }</p></div></li>:"")} 
+       {Object.keys(user).map((item,index)=>item!=="Notification" && item!=="ActiveTasks"?<li key={index}  className="col-lg-3 col-md-4  my-1"><div className="p-1"><span className="lightText">{item}</span><p>{user[item] }</p></div></li>:"")} 
 
  
     </ul>

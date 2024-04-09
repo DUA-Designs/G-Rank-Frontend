@@ -101,25 +101,25 @@ export   function Home( {page}){
       <QuickAccess page={page}/>
        <div className="container-fluid  ">
       
-             <div className="  row  p-3 position-relative" id="dayTime"> 
+             <div className="  row   position-relative border py-2" id="dayTime"> 
              <img src={cool} alt="background" className="position-absolute backImg"></img>
               
               <div className="col-lg-10 col-md-10">
               
-                <div className="headContainer p-2 rounded   shadow     d-flex align-items-center">
+                <div className="headContainer p-2 rounded    border     d-flex align-items-center">
                          <h4 className="col-12 userGreetings" >{greetingTimes.filter(item=>date.getHours()>=item.rangeStart && date.getHours()<item.rangeEnd)[0].greet}</h4>
  
                 </div>
               <div className="col-12" >
              
                  
-            <div className="col-lg-7 col-md-7 mx-auto text-center quoteContainer shadow   rounded   position-relative my-3"> 
-            <i class="fa-solid fa-quote-left corner-left position-absolute top-0 start-0 translate-middle"></i>
-             <i class="fa-solid fa-quote-right corner-right position-absolute top-100 start-100 translate-middle"></i> 
+            <div className="col-lg-7 col-md-7 mx-auto text-center quoteContainer  py-2   border   rounded   position-relative my-3"> 
+            <i class="fa-solid fa-quote-left corner-left position-absolute top-0 start-0 m-2 "></i>
+             <i class="fa-solid fa-quote-right corner-right position-absolute top-100 start-100  m-2 "></i> 
                            < p className="userQuote my-1  p-2">Quote Of The Day</p>
-              <h5  className=" p-4  my-1 fs-4"> {myQuote} 
-               <p className="text-end mt-3 fs-6">{author?"- " +author:""}</p>
-                </h5>
+              <h6  className=" p-2  my-1 myQuote text-center"> {myQuote} </h6>
+               <p className="text-end mt-3 userQuote px-4">{author?"- " +author:""}</p>
+                
                 
             </div>
               
@@ -128,7 +128,7 @@ export   function Home( {page}){
 
               </div>
               </div>
-              <div className="col-lg-2 col-md-2 col-sm-4 col-xs-6"><img alt="dayImages" src={greetingTimes.filter(item=>date.getHours()>=item.rangeStart && date.getHours()<item.rangeEnd)[0].image} className="img-fluid"></img></div>
+              <div className="col-lg-2 col-md-2 col-sm-4 col-xs-6  "><img alt="dayImages" src={greetingTimes.filter(item=>date.getHours()>=item.rangeStart && date.getHours()<item.rangeEnd)[0].image} className="img-fluid"></img></div>
               
               </div> 
              

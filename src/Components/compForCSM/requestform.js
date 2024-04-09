@@ -14,12 +14,14 @@ async function handleTaskSubmit(event){
          let Description=document.getElementById("Description").value.trim();
          let Department=document.getElementById("Department").value.trim();
          let Deadline=document.getElementById("Deadline").value.trim();
-         let response=await axios.get(`https://g-rank-backend.onrender.com/addTask?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}`);
+            let taskid=document.getElementById("taskid").value.trim();
+          
+         let response=await axios.get(`https://g-rank-backend.onrender.com/addTask?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}&id=${taskid}`);
          document.querySelector(".error").innerHTML=response.data.text;
 
               setTimeout(()=>{
                   document.querySelector(".error").innerHTML="";
-              },1000);
+              },2000);
 
               
 }
@@ -35,9 +37,13 @@ async function handleTaskSubmit(event){
          <div className="col-12 p-4 ">
                  <form className="my-4"  onSubmit={(event)=>handleTaskSubmit(event)} >
                               <div className="row">
-                              
+                                  <div className="mb-3 col-lg-6 col-md-6">
+                                  <label for="taskid" className="form-label">Task Id</label>
+                                  <input type="text" className="form-control" id="taskid" aria-describedby=" " required/>
+                                 
+                                </div>
                                  <div className="mb-3 col-lg-6 col-md-6">
-                                  <label for="Task" className="form-label">Task</label>
+                                  <label for="Task" className="form-label">Task Name</label>
                                   <input type="text" className="form-control" id="task" aria-describedby=" " required/>
                                  
                                 </div>

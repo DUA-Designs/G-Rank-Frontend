@@ -52,6 +52,7 @@ export function DueTask( ){
             <div className="border rounded">
                 <table className="col-12 text-center  "  >
                         <thead>
+                        <th>Id</th>
                                     <th>Task</th>                                           
                         <th>Description</th>
                         <th>Department</th>
@@ -60,7 +61,7 @@ export function DueTask( ){
                          <th>Status</th>
                         </thead>
                         <tbody className="tableBody">
-                          {dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).map(key=><td>{item[key]}</td>)} <td> In Progress</td></tr>)}
+                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).map(key=><td>{item[key]}</td>)}</tr> ):""}
 
                         </tbody>
                  
