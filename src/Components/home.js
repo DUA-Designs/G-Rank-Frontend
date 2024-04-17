@@ -4,7 +4,10 @@ import { air, cool, evening, morning, night, noon, pie, poi, review, taxable, tr
 import { Navbar } from "./navbar";
 import { QuickAccess } from "./quickAccess";
  
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import   axios  from "axios";
+import { userAPI } from "../redux/counterSlice";
+ 
 
  
  
@@ -17,11 +20,17 @@ const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Frida
 const greetingTimes=[{greet:"Good Morning",image:morning,rangeStart:6,rangeEnd:12},{greet:"Good Noon",image:noon,rangeStart:12,rangeEnd:16},{greet:"Good Evening",image:evening,rangeStart:16,rangeEnd:20},{greet:"Good Night",image:night,rangeStart:20,rangeEnd:24}];
  
 export   function Home( {page}){ 
- 
+   const user=useSelector(state=>state.user.value);
+   const dispatch=useDispatch();
   const [date,setDate]=useState(new Date());
   const [myQuote,setMyQuote]=useState("");
   const [author,setAuthor]=useState("");
-  const user=useSelector(state=>state.user.value);
+  const [swipeIn,setSwipeIn]=useState("");
+    const [swipeOut,setSwipeOut]=useState("");
+    const [disableSignIn,setDisableSignIn]=useState(false);
+  
+
+
         
   async function scatter(){
     let tabs= document.querySelectorAll(".tabs");
@@ -88,9 +97,67 @@ export   function Home( {page}){
          
         
          getQuote();
+          
+          checkSignIn();   
+
        
         
-      },[])
+      },[]);
+      async function checkSignIn(){
+            const swipedDate=`${date.getDate()}-${date.getMonth()>9?date.getMonth()+1:"0"+(date.getMonth()+1)}-${date.getFullYear()}`;
+            
+         
+         let checkSwipeIn=user.Attendance?user.Attendance.filter(item=>item.swipedDate===swipedDate).length>=1?user.Attendance.filter(item=>item.swipedDate===swipedDate)[0].swipeIn:"":"";
+                 setSwipeIn(  checkSwipeIn?checkSwipeIn:"");
+         let checkSwipeOut=user.Attendance?user.Attendance.filter(item=>item.swipedDate===swipedDate).length>=1?user.Attendance.filter(item=>item.swipedDate===swipedDate)[0].swipeOut:"":"";
+                setSwipeOut(  checkSwipeOut?checkSwipeOut:"");
+                
+                if(checkSwipeIn && checkSwipeOut){
+                          setDisableSignIn(true);
+                }
+                   
+           
+      }
+
+      async function handleAttendance(event){
+ 
+       const swipedDate=`${date.getDate()}-${date.getMonth()>9?date.getMonth()+1:"0"+(date.getMonth()+1)}-${date.getFullYear()}`;
+      
+         const swipe=document.querySelector(".currentTime").innerHTML;
+        
+                       
+                      
+                           const response =await axios.get(`https://g-rank-backend.onrender.com/attendance?EmployeeID=${user.EmployeeID}&swipedDate=${swipedDate}&swipe=${swipe}`);
+                          if(response.data.exec){
+                            if(event==="Sign In"){
+                              setSwipeIn( swipe)
+                             
+                            }
+                            else{
+                               setSwipeOut( swipe);
+                                   setDisableSignIn(true);
+                            }
+                            
+                           
+                          }
+                           
+                 
+                        
+        
+        
+       dispatch(userAPI({employeeID:user.EmployeeID}));
+        
+
+
+      }
+
+      function showSwipes(){
+
+        document.querySelector(".swipeBox").classList.add("active");
+      }
+      function closeSwipeBox(){
+         document.querySelector(".swipeBox").classList.remove("active");
+      }
     
  
     return ( 
@@ -136,7 +203,10 @@ export   function Home( {page}){
       
    
     <div className="col-lg-8 col-md-10 mx-auto ">
-    <div className="  row    my-3 " id="homeElements">
+    <div className="  row    my-3 position-relative" id="homeElements">
+    <div className="position-absolute swipeBox rounded shadow p-3"> 
+                <div className="text-end closeSwipeBox"><span>Swipes</span><i class="fi fi-tr-circle-xmark" onClick={closeSwipeBox}></i></div>
+    </div>
 
       <div className="col-lg-4 col-md-4  my-1  tabs">
         <div className="col-12   border rounded    p-2  " >
@@ -152,14 +222,15 @@ export   function Home( {page}){
             <div className="col-9 ">
               <p>{ date.getDate()+" "+monthsInArray[date.getMonth()] + " "+ date.getFullYear()}</p>
               <p>{dayNames[date.getDay()]} | 9:30 AM to 6:30 PM</p>
-              <p>{date.getHours() + " : "} {date.getMinutes()>9?date.getMinutes():"0"+date.getMinutes() } : {date.getSeconds()>9?date.getSeconds():"0"+date.getSeconds()}</p>
+              <p className="currentTime">{date.getHours() + " : "} {date.getMinutes()>9?date.getMinutes():"0"+date.getMinutes() } : {date.getSeconds()>9?date.getSeconds():"0"+date.getSeconds()}</p>
 
 
             </div>
           <div className="col-3 "><img src={air} alt="reviewImage" className="img-fluid"></img></div>
           </div>
+            <div className="d-flex justify-content-around my-1 text-start"><div className="swipeIn">Swipe In - {swipeIn }</div><div className="swipeOut">Swipe Out - {swipeOut }</div></div>
           <div className="d-flex justify-content-between my-1">
-            <span className="btn swipes">View Swipes</span><span className="btn signOut">Sign Out</span>
+            <span className="btn swipes" onClick={showSwipes}>View Swipes</span>{disableSignIn?<span className="btn signOut"> <i class="fi fi-rr-ban"></i></span>:<span className="btn signOut"   onClick={()=>handleAttendance(swipeIn?"Sign Out":"Sign In")}>{swipeIn?"Sign Out":"Sign In"}</span>}
           </div>
       
         </div>
