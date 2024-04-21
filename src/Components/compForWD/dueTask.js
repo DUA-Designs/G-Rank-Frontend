@@ -16,7 +16,7 @@ export function Engage( ){
 async function handleUpdate(ind)
     {
         let data=document.querySelectorAll(`.tableBody tr:nth-child(${ind+1}) td`);
-         let selectedStat=data[4].childNodes[0].value;
+         let selectedStat=data[5].childNodes[0].value;
          
          if(selectedStat==="default"){
               selectedStat="Assigned";
@@ -26,7 +26,7 @@ async function handleUpdate(ind)
        
 
 
-        const res=await axios.get(`http://localhost:8000/updateStatus?Progress=${selectedStat}&id=${user.ActiveTasks[ind].id}&EmployeeID=${user.EmployeeID}`);
+        const res=await axios.get(`https://g-rank-backend.onrender.com/updateStatus?Progress=${selectedStat}&id=${user.ActiveTasks[ind].id}&EmployeeID=${user.EmployeeID}`);
        
             console.log(res.data);
              dispatch(userAPI({employeeID:user.EmployeeID}));
