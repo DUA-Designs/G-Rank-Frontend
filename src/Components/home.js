@@ -137,17 +137,18 @@ export   function Home( {page}){
                                setSwipeOut( swipe);
                                    setDisableSignIn(true);
                             }
-                            
+                            console.log("Am I running?");
                            
                           }
                            
                  
                         
+       
         
-        
-       dispatch(userAPI({employeeID:user.EmployeeID}));
-        
-
+      //  dispatch(userAPI({employeeID:user.EmployeeID}));
+      //      console.log(swipeIn,swipeOut);
+      //   await checkSignIn();
+      //   console.log(swipeIn,swipeOut);
 
       }
 

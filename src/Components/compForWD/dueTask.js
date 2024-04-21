@@ -26,7 +26,7 @@ async function handleUpdate(ind)
        
 
 
-        const res=await axios.get(`https://g-rank-backend.onrender.com/updateStatus?Progress=${selectedStat}&id=${user.ActiveTasks[ind].id}`);
+        const res=await axios.get(`http://localhost:8000/updateStatus?Progress=${selectedStat}&id=${user.ActiveTasks[ind].id}&EmployeeID=${user.EmployeeID}`);
        
             console.log(res.data);
              dispatch(userAPI({employeeID:user.EmployeeID}));
@@ -38,7 +38,11 @@ async function handleUpdate(ind)
   const dispatch=useDispatch();
  useEffect(()=>{
   dispatch(userAPI({employeeID:user.EmployeeID}));
- },[])
+     
+       
+
+
+   },[])
   
  
     return (
@@ -61,9 +65,10 @@ async function handleUpdate(ind)
                         
                         
                           <th>Update</th>
+                           <th>Status</th>
                         </thead>
                         <tbody className="tableBody">
-                          {user["ActiveTasks"]?user["ActiveTasks"].map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>  it!=="id").map(key=><td>{item[key]}</td>)}<td><select onChange={()=>handleUpdate(index)}><option value={"default"}>Select</option><option value={"toDo"}>To Do</option><option value={"WIP"}>Work In progress</option><option value={"PA"}>Pending Approval</option><option value={"Done"}>Completed</option> </select></td>  </tr>):""}
+                          {user["ActiveTasks"]?user["ActiveTasks"].map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>  it!=="id" ).map(key=><td>{item[key]}</td>)}<td><select onChange={()=>handleUpdate(index)}><option value={"default"}>Select</option><option value={"toDo"}>To Do</option><option value={"WIP"}>Work In progress</option><option value={"PA"}>Pending Approval</option><option value={"Done"}>Completed</option> </select></td>   </tr>):""}
 
                         </tbody>
                  
