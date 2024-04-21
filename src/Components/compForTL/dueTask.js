@@ -36,7 +36,7 @@ export function DueTask( ){
         
 
     }
- console.log(dueTasks);
+ 
     // async function getTasks(){
     //    let response=await axios.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vR4bqhRdZBrGt_fB8r0kRDdDXDuG4OHiFzL7vrlJow1NL30mKCkjwcLhQ7_MgL3_7FNQOc3uARJ8fS2/pub?output=csv');
     //    console.log(response.data);
@@ -86,7 +86,7 @@ export function DueTask( ){
                          <th>Add</th>
                         </thead>
                         <tbody className="tableBody">
-                          {dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><td>{item[key]}</td>)}<td><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select></td><td   className="p-2 addButton    " onClick={( )=>handleTaskMove(index)}><i class="fi fi-tr-square-plus"></i></td></tr>)}
+                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><td>{item[key]}</td>)}<td><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select></td><td   className="p-2 addButton    " onClick={( )=>handleTaskMove(index)}><i class="fi fi-tr-square-plus"></i></td></tr>):""}
 
                         </tbody>
                  

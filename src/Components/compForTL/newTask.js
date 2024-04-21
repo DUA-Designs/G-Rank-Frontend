@@ -36,7 +36,7 @@ export function NewTask( ){
                         
                         </thead>
                         <tbody>
-                          {activeTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).map(key=> <td>{item[key]}</td> )}<td   className="p-2 addButton rounded  "  ><i class="fi fi-tr-square-minus"></i></td></tr>)}
+                          {activeTasks?activeTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).map(key=> <td>{item[key]}</td> )}<td   className="p-2 addButton rounded  "  ><i class="fi fi-tr-square-minus"></i></td></tr>):""}
 
                         </tbody>
                 
