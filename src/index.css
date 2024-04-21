@@ -338,16 +338,22 @@ ul{
 
  overflow: hidden;
  /* background :url(https://www.toptal.com/designers/subtlepatterns/uploads/memphis-colorful.png); */
- background:#0174b1;
+background-color: #8BC6EC;
+background-image: linear-gradient(135deg, #8BC6EC 0%, #0174b1 100%);
+
+
  /* linear-gradient(to top , rgba(255, 255, 255, 0.2),transparent),linear-gradient(to bottom , rgba(255, 252, 252, 0.2),transparent), */
- background-position: center;
+ /* background-position: center;
  background-repeat: no-repeat;
- background-size: cover;
+ background-size: cover; */
  
  
  transition: all 0.3s linear !important;
  
  
+}
+.imgContainer{
+  mix-blend-mode: color-dodge;
 }
 .backImg{
   width: 100%;

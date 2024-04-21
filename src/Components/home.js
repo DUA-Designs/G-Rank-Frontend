@@ -196,7 +196,7 @@ export   function Home( {page}){
 
               </div>
               </div>
-              <div className="col-lg-2 col-md-2 col-sm-4 col-xs-6  "><img alt="dayImages" src={greetingTimes.filter(item=>date.getHours()>=item.rangeStart && date.getHours()<item.rangeEnd)[0].image} className="img-fluid"></img></div>
+              <div className="col-lg-2 col-md-2 col-sm-4 col-xs-6  imgContainer"><img alt="dayImages" src={greetingTimes.filter(item=>date.getHours()>=item.rangeStart && date.getHours()<item.rangeEnd)[0].image} className="img-fluid"></img></div>
               
               </div> 
              
