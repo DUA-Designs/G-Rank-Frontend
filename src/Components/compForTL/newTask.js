@@ -3,6 +3,7 @@ import { Navbar } from "../navbar";
 import { QuickAccess } from "../quickAccess";
 import { useEffect } from "react";
 import { activeTasksAPI } from "../../redux/activeTasksSlice";
+ 
 
 
 export function NewTask( ){
@@ -12,6 +13,10 @@ export function NewTask( ){
         dispatch(activeTasksAPI());
 
     },[])
+
+    async function handleActiveTaskDelete(ind){
+         console.log(ind);
+    }
   
  
     return (
@@ -32,11 +37,12 @@ export function NewTask( ){
                         <th>Department</th>
                         <th>Deadline</th>
                          <th>Dev</th>
+                         <th>Status</th>
                          <th>Action</th>
                         
                         </thead>
                         <tbody>
-                          {activeTasks?activeTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).map(key=> <td>{item[key]}</td> )}<td   className="p-2 addButton rounded  "  ><i class="fi fi-tr-square-minus"></i></td></tr>):""}
+                          {activeTasks?activeTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="id").map(key=> <td>{item[key]}</td> )}<td   className="p-2 addButton rounded  "  onClick={()=>handleActiveTaskDelete(index)} ><i class="fi fi-tr-square-minus"></i></td></tr>):""}
 
                         </tbody>
                 

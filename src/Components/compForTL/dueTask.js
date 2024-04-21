@@ -21,14 +21,15 @@ export function DueTask( ){
          if(selectedDev==="default"){
           alert("Please assign a dev");
           return ""};
-  
-        let Task=data[0].innerHTML;
-        let Description=data[1].innerHTML;
-        let Department=data[2].innerHTML;
-        let Deadline=data[3].innerHTML;
+       
+    
+        let Task=data[1].innerHTML;
+        let Description=data[2].innerHTML;
+        let Department=data[3].innerHTML;
+        let Deadline=data[4].innerHTML;
 
 
-        const res=await axios.get(`https://g-rank-backend.onrender.com/addToActiveTasks?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}&Dev=${selectedDev}&id=${dueTasks[ind].id}`);
+        const res=await axios.get(`http://localhost:8000/addToActiveTasks?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}&Dev=${selectedDev}&id=${dueTasks[ind].id}`);
        
             console.log(res.data);
              dispatch(userAPI({employeeID:user.EmployeeID}));
