@@ -29,7 +29,7 @@ export function DueTask( ){
         let Deadline=data[4].innerHTML;
 
 
-        const res=await axios.get(`http://localhost:8000/addToActiveTasks?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}&Dev=${selectedDev}&id=${dueTasks[ind].id}`);
+        const res=await axios.get(`https://g-rank-backend.onrender.com/addToActiveTasks?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}&Dev=${selectedDev}&id=${dueTasks[ind].id}`);
        
             console.log(res.data);
              dispatch(userAPI({employeeID:user.EmployeeID}));

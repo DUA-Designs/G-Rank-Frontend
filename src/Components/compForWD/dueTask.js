@@ -26,7 +26,7 @@ async function handleUpdate(ind)
        
 
 
-        const res=await axios.get(`http://localhost:8000/updateStatus?Progress=${selectedStat}&id=${user.ActiveTasks[ind].id}&EmployeeID=${user.EmployeeID}`);
+        const res=await axios.get(`https://g-rank-backend.onrender.com/updateStatus?Progress=${selectedStat}&id=${user.ActiveTasks[ind].id}&EmployeeID=${user.EmployeeID}`);
        
             console.log(res.data);
              dispatch(userAPI({employeeID:user.EmployeeID}));
