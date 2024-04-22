@@ -3,11 +3,13 @@ import { Navbar } from "../navbar";
 import { QuickAccess } from "../quickAccess";
 import { useEffect } from "react";
 import { activeTasksAPI } from "../../redux/activeTasksSlice";
+import axios from "axios";
  
 
 
 export function NewTask( ){
     const activeTasks=useSelector(state=>state.activeTasks.value);
+    const user=useSelector(state=>state.user.value);
     const dispatch=useDispatch();
     useEffect(()=>{
         dispatch(activeTasksAPI());
@@ -15,7 +17,9 @@ export function NewTask( ){
     },[])
 
     async function handleActiveTaskDelete(ind){
-         console.log(ind);
+          const response =await axios.get(`http://localhost:8000/deleteActiveTask?id=${activeTasks[ind].id}&EmployeeID=${user.EmployeeID}&Dev=${activeTasks[ind].Dev}&Notification=${user.Notification}`);
+          console.log(response.data.text);
+
     }
   
  
