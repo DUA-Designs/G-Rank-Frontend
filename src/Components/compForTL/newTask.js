@@ -17,7 +17,7 @@ export function NewTask( ){
     },[])
 
     async function handleActiveTaskDelete(ind){
-          const response =await axios.get(`http://localhost:8000/deleteActiveTask?id=${activeTasks[ind].id}&EmployeeID=${user.EmployeeID}&Dev=${activeTasks[ind].Dev}&Notification=${user.Notification}`);
+          const response =await axios.get(`https://g-rank-backend.onrender.com/deleteActiveTask?id=${activeTasks[ind].id}&EmployeeID=${user.EmployeeID}&Dev=${activeTasks[ind].Dev}&Notification=${user.Notification}`);
           console.log(response.data.text);
 
     }
