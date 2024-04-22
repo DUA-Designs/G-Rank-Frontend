@@ -153,17 +153,32 @@ export   function Home( {page}){
 
       }
 
-      function showSwipes(){
-
+     async function showSwipes(){
+ 
         document.querySelector(".swipeBox").classList.add("active");
+        await new Promise(resolve=>{
+          setTimeout(()=>{
+            resolve("this is for loading time");
+          },400);
+        });
+         document.querySelector(".whiteScreen").classList.add("active");
+        
       }
-      function closeSwipeBox(){
-         document.querySelector(".swipeBox").classList.remove("active");
+     async function closeSwipeBox(){
+       
+          document.querySelector(".whiteScreen").classList.remove("active");
+          await   new Promise(resolve=>{
+          setTimeout(()=>{
+            resolve("this is for loading time");
+          },400);
+        });
+             document.querySelector(".swipeBox").classList.remove("active");
       }
     
  
     return ( 
       <div className="row ">
+        <div className='whiteScreen'></div>
       <Navbar  />
     <div className="     border  sectionContainer" id="empInfo">
    
@@ -206,7 +221,7 @@ export   function Home( {page}){
    
     <div className="col-lg-8 col-md-10 mx-auto ">
     <div className="  row    my-3 position-relative" id="homeElements">
-    <div className="position-absolute swipeBox rounded shadow col-lg-8 col-md-8 col-sm-11   ">  
+    <div className="  swipeBox rounded shadow col-lg-5 col-md-7 col-sm-11   ">  
                 <div className="text-end closeSwipeBox p-2 rounded "><span>Swipes</span><i class="fi fi-tr-circle-xmark" onClick={closeSwipeBox}></i></div>
 
                 <div className="text-center flexEven  mt-2 p-2"><span>Date { date.getDate()+" "+monthsInArray[date.getMonth()] + " "+ date.getFullYear()}</span><span>Shift Time 09:30 to 18:30</span><span>Shift type  FS</span></div>

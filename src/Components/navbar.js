@@ -21,6 +21,7 @@ export function Navbar(){
 
     return (
         <div className="     p-2" id="nav-bar">
+        
           <div  className="col-12   mb-3 p-2 d-flex align-items-center justify-content-between"> <img src={grank} alt="G-rank Digital Services Private Limited" className="img-fluid"  style={{width:"150px"}}></img>  </div>
           <div className='d-flex flex-wrap my-1 text-nowrap align-items-center justify-content-between  '>
             <div className='col-4 mx-auto'><img className="img-fluid" src={profilePic} alt='profilePicture'></img></div>

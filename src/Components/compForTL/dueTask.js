@@ -28,7 +28,7 @@ export function DueTask( ){
         let Department=data[3].innerHTML;
         let Deadline=data[4].innerHTML;
 
-
+ //http://localhost:8000/addToActiveTasks
         const res=await axios.get(`https://g-rank-backend.onrender.com/addToActiveTasks?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}&Dev=${selectedDev}&id=${dueTasks[ind].id}`);
        
             console.log(res.data);

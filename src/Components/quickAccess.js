@@ -1,5 +1,5 @@
  
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 
  
 import { useSelector } from "react-redux";
@@ -12,6 +12,7 @@ import { time } from "../media";
  
 
 export function QuickAccess({page} ){
+  const timeSound=useRef();
 
 
        const user=useSelector(state=>state.user.value);
@@ -34,17 +35,17 @@ export function QuickAccess({page} ){
     
  
  }
- function play(){
-  document.getElementById("time").play();
- }
+ 
  
  async function handleSessionCloser(args){
 
  
   if(args==="add"){
     document.getElementById("sessionPopUp").classList.add("showMe");
-   
-    document.getElementById("time").click();
+ 
+if (timeSound.current !== null) {
+  timeSound.current.play();
+}
     let line=document.querySelector("#line");
  
      
@@ -120,21 +121,22 @@ export function QuickAccess({page} ){
           
           let tdHours=Math.abs(Number(loginTime.split(":")[0])-date.getHours());
         
-          let td=tdHours*60+tdMinutes +tdSeconds/60;
+          let td=tdHours*60*60+tdMinutes*60 +tdSeconds ;
+          console.log(td);
          
        
                   
-      if( Math.abs(td).toFixed(2)>=20  && `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`===loginDate){
+      if( Math.abs(td)>=72000  && `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`===loginDate){
           
            localStorage.removeItem("lastlogin");
-           window.location.href="/";
+         window.location.href="/G-Rank-Frontend";
            localStorage.removeItem("sessionTime");
         
       
       }
      
         
-      if(Math.abs(td).toFixed(2)>=15.1 && Math.abs(td).toFixed(2)<15.13   && `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`===loginDate){
+      if(Math.abs(td)===60000     && `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`===loginDate){
          
        if(!document.getElementById("sessionPopUp").classList.contains("showMe")){
             
@@ -160,6 +162,7 @@ export function QuickAccess({page} ){
      
 
       <div  id="quickAccess" >
+    
             <div className="d-flex align-items-center justify-content-between ">
               
               <div className="row  align-items-center  ">
@@ -194,18 +197,20 @@ export function QuickAccess({page} ){
 
             </div>
           
-      <div id="sessionPopUp" className="p-2  shadow rounded   ">
+      <div id="sessionPopUp" className="p-2  shadow rounded border  ">
       
         <div className="row">
         <span className="col-10  ">Your session time is ending soon...</span>
         <p className="text-end col-2 " id="sessionCloser" onClick={()=>handleSessionCloser("remove")}><i className="fi fi-ts-circle-xmark"></i></p>
         </div>
-        <audio  id="time" onClick={play}>
-    <source src={time} type="audio/mp3"/>
-    </audio>
+        
     <div id="line"></div>
-          
+          <audio   ref={timeSound} src={time} type='audio'>
+     
+    </audio>
       </div>
+        
+    
       </div>
   
     )

@@ -319,8 +319,12 @@ ul{
   opacity: 0.8;
   
 }
+.swipes{
+   border: 1px solid #b5c1c5;
+}
 .swipes:hover{
   background-color: #0174b1;
+  
   color: white;
 }
 .signOut {
@@ -399,23 +403,37 @@ background-image: linear-gradient(135deg, #8BC6EC 0%, #0174b1 100%);
 }
 
 .swipeBox{
-  
+   position: fixed;
   height: 250px;
   top:-15%;
   background: white;
-  z-index: -9 ;
+ z-index: -100;
 transform: scale(0);
  transition:all 0.4s linear;
  left: 0 ;
  right: 0;
- margin: 0 auto;
+ top: 0;
+ bottom: 0;
+ margin:  auto;
  padding: 0;
   
  
 }
+.whiteScreen{
+  position: fixed;
+  width: 100vw;
+  height:100vh;
+  background-color: rgba(255, 255, 255, 0.788);
+ z-index: -100;
+ transition: all 0.2s linear;
+ 
+}
+.whiteScreen.active{
+  z-index: 1000000;
+}
 .swipeBox.active{
  
-  z-index: 10;
+  z-index: 1000000;
   opacity: 1;
 transform: scale(1);
     
