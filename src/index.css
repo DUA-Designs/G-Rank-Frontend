@@ -399,13 +399,17 @@ background-image: linear-gradient(135deg, #8BC6EC 0%, #0174b1 100%);
 }
 
 .swipeBox{
-  width: 100%;
-  height: 500px;
+  
+  height: 250px;
   top:-15%;
   background: white;
   z-index: -9 ;
 transform: scale(0);
  transition:all 0.4s linear;
+ left: 0 ;
+ right: 0;
+ margin: 0 auto;
+ padding: 0;
   
  
 }
@@ -418,11 +422,17 @@ transform: scale(1);
  
   
 }
+.flexEven{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .closeSwipeBox{
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #f1f4f7;
 }
 .closeSwipeBox i{
   color: #0174b1;
@@ -438,6 +448,26 @@ transform: scale(1);
 
 
 
+}
+.swipeTable{
+  width: 85%;
+  margin: 0 auto;
+  border: 1px solid #b5c1c5;
+  border-collapse: collapse;
+  
+}
+
+.swipeTable tr {
+
+  border: 1px solid #b5c1c5;
+}
+.swipeTable td {
+ 
+   padding: 0.5rem;
+}
+.swipeTable th{
+  background: #e9f7ff;
+  padding: 0.5rem;
 }
 /* Css for Home Page*/
 

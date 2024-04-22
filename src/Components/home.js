@@ -128,16 +128,18 @@ export   function Home( {page}){
                        
                       
                            const response =await axios.get(`https://g-rank-backend.onrender.com/attendance?EmployeeID=${user.EmployeeID}&swipedDate=${swipedDate}&swipe=${swipe}`);
+                           console.log(response.data.exec );
                           if(response.data.exec){
+                            
                             if(event==="Sign In"){
-                              setSwipeIn( swipe)
+                              setSwipeIn( swipe);
                              
                             }
                             else{
                                setSwipeOut( swipe);
                                    setDisableSignIn(true);
                             }
-                            console.log("Am I running?");
+                         
                            
                           }
                            
@@ -145,10 +147,9 @@ export   function Home( {page}){
                         
        
         
-      //  dispatch(userAPI({employeeID:user.EmployeeID}));
-      //      console.log(swipeIn,swipeOut);
-      //   await checkSignIn();
-      //   console.log(swipeIn,swipeOut);
+       dispatch(userAPI({employeeID:user.EmployeeID}));
+
+     
 
       }
 
@@ -205,8 +206,14 @@ export   function Home( {page}){
    
     <div className="col-lg-8 col-md-10 mx-auto ">
     <div className="  row    my-3 position-relative" id="homeElements">
-    <div className="position-absolute swipeBox rounded shadow p-3"> 
-                <div className="text-end closeSwipeBox"><span>Swipes</span><i class="fi fi-tr-circle-xmark" onClick={closeSwipeBox}></i></div>
+    <div className="position-absolute swipeBox rounded shadow col-lg-8 col-md-8 col-sm-11   ">  
+                <div className="text-end closeSwipeBox p-2 rounded "><span>Swipes</span><i class="fi fi-tr-circle-xmark" onClick={closeSwipeBox}></i></div>
+
+                <div className="text-center flexEven  mt-2 p-2"><span>Date { date.getDate()+" "+monthsInArray[date.getMonth()] + " "+ date.getFullYear()}</span><span>Shift Time 09:30 to 18:30</span><span>Shift type  FS</span></div>
+                <div className="text-center mt-4"> <table  className="swipeTable">
+                     <thead><th>Swipe In</th><th>Swipe Out</th></thead>
+                     <tbody ><tr><td>{swipeIn?swipeIn:" "}</td><td>{swipeOut?swipeOut:" "}</td></tr></tbody>
+                </table></div>
     </div>
 
       <div className="col-lg-4 col-md-4  my-1  tabs">
@@ -227,7 +234,7 @@ export   function Home( {page}){
 
 
             </div>
-          <div className="col-3 "><img src={air} alt="reviewImage" className="img-fluid"></img></div>
+            <div className="col-3 "><img src={air} alt="reviewImage" className="img-fluid"></img></div>
           </div>
             <div className="d-flex justify-content-around my-1 text-start"><div className="swipeIn">Swipe In - {swipeIn }</div><div className="swipeOut">Swipe Out - {swipeOut }</div></div>
           <div className="d-flex justify-content-between my-1">
