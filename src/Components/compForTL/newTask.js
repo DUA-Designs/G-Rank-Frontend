@@ -32,7 +32,7 @@ export function NewTask( ){
           <div className="marginTop">
              <div className="p-2">
               <h3 className="text-center border rounded p-2 mb-2">Active Tasks</h3></div>
-         <div className=" p-2 activeTaskTable ">
+         <div className=" p-2 activeTaskTable col-10">
             <div className="border rounded">
                 <table className="col-12 text-center  "  >
                         <thead>
