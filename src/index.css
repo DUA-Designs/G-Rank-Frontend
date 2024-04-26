@@ -590,6 +590,11 @@ padding:2px 5px;
   left:30px;
   background-color: #37a8e4;
 }
+.activeTaskTable table{
+ 
+ 
+  
+}
  .activeTaskTable th{
     font-weight: 600;
 
@@ -610,10 +615,17 @@ padding:2px 5px;
   
  }
  .activeTaskTable  {
+ 
   height: 550px;
   overflow-y: auto;
   overflow-x: hidden;
  }
+  .activeTaskTable>div{
+    width: 100%;
+   
+  }
+   
+
   .activeTaskTable tbody td{
       padding: 0.5rem;
      
@@ -710,14 +722,15 @@ padding:2px 5px;
  
   position: absolute;
   
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border: 1px solid #b3b3b3;
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
+   
     }
     
     @keyframes rotation {
@@ -731,6 +744,23 @@ padding:2px 5px;
 .loaderContainer{
   height: 40px ;
   width: 50px;
+  
+}
+.newTaskLoader{
+   width: 16px;
+    height: 16px;
+    border: 1px solid #b3b3b3;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin-left: auto;
+      opacity: 0;
+}
+.newTaskLoader.active{
+  opacity: 1;
+  transition: 0.1s linear;
 }
 @media screen and (max-width:768px) {
   #nav-bar{
@@ -788,6 +818,21 @@ padding:2px 5px;
   }
   .marginTop{
     margin-top: 100px;
+ }
+  .activeTaskTable thead{
+  font-size: 8px;
+ 
+ 
+  
+ }
+ .activeTaskTable tbody{
+  font-size: 6px;
+ 
+
+  
+ }
+ .addButton  i{
+ font-size: 20px;
  }
   
 }

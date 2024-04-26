@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Navbar } from "../navbar";
 import { QuickAccess } from "../quickAccess";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { activeTasksAPI } from "../../redux/activeTasksSlice";
 import axios from "axios";
  
@@ -12,18 +12,26 @@ export function NewTask( ){
     const activeTasks=useSelector(state=>state.activeTasks.value);
     const user=useSelector(state=>state.user.value);
     const dispatch=useDispatch();
+  
     useEffect(()=>{
         dispatch(activeTasksAPI());
+    
 
     },[])
 
     async function handleActiveTaskDelete(ind){
+
+        document.querySelector(".newTaskLoader").classList.add("active");
           const response =await axios.get(`https://g-rank-backend.onrender.com/deleteActiveTask?id=${activeTasks[ind].id}&EmployeeID=${user.EmployeeID}&Dev=${activeTasks[ind].Dev}&Notification=${user.Notification}`);
           console.log(response.data.text);
 
 
           dispatch( activeTasksAPI());
 
+            await new Promise(resolve=>setTimeout(()=>{
+        resolve("This is for laoding time")
+    },500));
+            document.querySelector(".newTaskLoader").classList.remove("active");
     }
   
  
@@ -33,11 +41,11 @@ export function NewTask( ){
 
         <div className="col-10 mx-auto  border sectionContainer" >
         < QuickAccess page={"New Task"}/>
-          <div className="marginTop">
+          <div className=" ">
              <div className="p-2">
-              <h3 className="text-center border rounded p-2 mb-2">Active Tasks</h3></div>
-         <div className=" p-2 activeTaskTable col-10">
-            <div className="border rounded">
+              <h3 className="text-center border rounded p-2 mb-2">Active Tasks <div className="newTaskLoader"></div></h3>  </div>
+         <div className=" p-2 activeTaskTable col-lg-10 col-md-11">
+            <div className="border rounded ">
                 <table className="col-12 text-center  "  >
                         <thead>
                                     <th>Task</th>                                           

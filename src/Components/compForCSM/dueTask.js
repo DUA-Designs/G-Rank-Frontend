@@ -61,7 +61,7 @@ export function DueTask( ){
                          <th>Status</th>
                         </thead>
                         <tbody className="tableBody">
-                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).map(key=><td>{item[key]}</td>)}</tr> ):""}
+                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).map(key=><td className="col-2">{item[key]}</td>)}</tr> ):""}
 
                         </tbody>
                  

@@ -91,10 +91,10 @@ export function DueTask( ){
 
         <div className="col-10 mx-auto  border sectionContainer" >
         < QuickAccess page={"DueTask"}/>
-        <div className="marginTop ">
+        <div className="  ">
              <div className="p-2">
               <h3 className="text-center border rounded p-2 mb-2">Due Tasks</h3></div>
-         <div className=" p-2 activeTaskTable  col-10">
+         <div className=" p-2 activeTaskTable  col-lg-10 col-md-11">
             <div className="border rounded">
                 <table className="col-12 text-center  "  >
                         <thead>
@@ -108,7 +108,7 @@ export function DueTask( ){
                          <th>Add</th>
                         </thead>
                         <tbody className="tableBody">
-                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><td>{item[key]}</td>)}<td><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select></td><td   className=" d-flex align-items-center justify-content-center   position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={( )=>handleTaskMove(index)}><i class="fi fi-tr-square-plus"></i></span> } </div>   </td> </tr>):""}
+                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><td className=" ">{item[key]}</td>)}<td className=""><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select></td><td   className=" d-flex align-items-center justify-content-center   position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={( )=>handleTaskMove(index)}><i class="fi fi-tr-square-plus"></i></span> } </div>   </td> </tr>):""}
 
                         </tbody>
                  
