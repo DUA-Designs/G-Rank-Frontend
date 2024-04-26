@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/G-Rank-Frontend/static/css/main.3512ab51.css",
-    "main.js": "/G-Rank-Frontend/static/js/main.3901df38.js",
+    "main.css": "/G-Rank-Frontend/static/css/main.3b7dee79.css",
+    "main.js": "/G-Rank-Frontend/static/js/main.04960982.js",
     "static/media/cool-background-cyan.png": "/G-Rank-Frontend/static/media/cool-background-cyan.371444d0b872f54f5a08.png",
     "static/media/4907157.jpg": "/G-Rank-Frontend/static/media/4907157.3261e91c47de7491b551.jpg",
     "static/media/message-incoming-132126.mp3": "/G-Rank-Frontend/static/media/message-incoming-132126.71ffe8d5a3a0e9bdc45d.mp3",
@@ -20,11 +20,11 @@
     "static/media/data-collection.png": "/G-Rank-Frontend/static/media/data-collection.63c11b9e9828af552803.png",
     "static/media/pie-chart.png": "/G-Rank-Frontend/static/media/pie-chart.68764b299e7da9dcc534.png",
     "index.html": "/G-Rank-Frontend/index.html",
-    "main.3512ab51.css.map": "/G-Rank-Frontend/static/css/main.3512ab51.css.map",
-    "main.3901df38.js.map": "/G-Rank-Frontend/static/js/main.3901df38.js.map"
+    "main.3b7dee79.css.map": "/G-Rank-Frontend/static/css/main.3b7dee79.css.map",
+    "main.04960982.js.map": "/G-Rank-Frontend/static/js/main.04960982.js.map"
   },
   "entrypoints": [
-    "static/css/main.3512ab51.css",
-    "static/js/main.3901df38.js"
+    "static/css/main.3b7dee79.css",
+    "static/js/main.04960982.js"
   ]
 }
