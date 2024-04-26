@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { activeTasksAPI } from "../../redux/activeTasksSlice";
 import axios from "axios";
  
+ 
 
 
 export function NewTask( ){
@@ -19,6 +20,9 @@ export function NewTask( ){
     async function handleActiveTaskDelete(ind){
           const response =await axios.get(`https://g-rank-backend.onrender.com/deleteActiveTask?id=${activeTasks[ind].id}&EmployeeID=${user.EmployeeID}&Dev=${activeTasks[ind].Dev}&Notification=${user.Notification}`);
           console.log(response.data.text);
+
+
+          dispatch( activeTasksAPI());
 
     }
   

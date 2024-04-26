@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Navbar } from "../navbar";
 import { QuickAccess } from "../quickAccess";
-import { useEffect   } from "react";
+import { useEffect, useState   } from "react";
 import axios from "axios";
 import { tasksAPI } from "../../redux/dueTaskSlice";
 import { userAPI } from "../../redux/counterSlice";
@@ -10,6 +10,7 @@ import { userAPI } from "../../redux/counterSlice";
 export function DueTask( ){
     const dueTasks=useSelector((state)=>state.tasks.value);
     const user=useSelector(state=>state.user.value);
+    const [loader,setLoader]=useState([]);
    
     const dispatch=useDispatch();
 
@@ -21,7 +22,13 @@ export function DueTask( ){
          if(selectedDev==="default"){
           alert("Please assign a dev");
           return ""};
+            let arr=loader;
+    arr[ind]=true;
+      setLoader([...arr]);
+        
        
+        
+            
     
         let Task=data[1].innerHTML;
         let Description=data[2].innerHTML;
@@ -33,9 +40,15 @@ export function DueTask( ){
        
             console.log(res.data);
              dispatch(userAPI({employeeID:user.EmployeeID}));
-        
-        
+                let arr2=loader;
+    arr2[ind]=false;
 
+    await new Promise(resolve=>setTimeout(()=>{
+        resolve("This is for laoding time")
+    },2000));
+      setLoader([...arr2]);
+               
+    
     }
  
     // async function getTasks(){
@@ -59,6 +72,14 @@ export function DueTask( ){
     // }
     useEffect(()=>{
      dispatch(tasksAPI());
+       let arr=[];
+     for(let i=0;i<dueTasks.lenght;i++){
+  
+                            arr.push(false);
+        
+     }
+      setLoader([...arr]);
+
         
     //    getTasks();
 
@@ -87,7 +108,7 @@ export function DueTask( ){
                          <th>Add</th>
                         </thead>
                         <tbody className="tableBody">
-                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><td>{item[key]}</td>)}<td><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select></td><td   className="    position-relative " onClick={( )=>handleTaskMove(index)}><span className="addButton " id={`addButton${index}`}><i class="fi fi-tr-square-plus"></i></span>  <div className={`loader${index}`}><div className="loader"></div></div></td> </tr>):""}
+                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><td>{item[key]}</td>)}<td><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select></td><td   className=" d-flex align-items-center justify-content-center   position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={( )=>handleTaskMove(index)}><i class="fi fi-tr-square-plus"></i></span> } </div>   </td> </tr>):""}
 
                         </tbody>
                  
