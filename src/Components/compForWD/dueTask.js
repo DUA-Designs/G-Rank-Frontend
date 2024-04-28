@@ -13,16 +13,27 @@ export function Engage( ){
  
 
  
-async function handleUpdate(ind)
+async function handleUpdate(ind,type)
     { document.querySelector(".newTaskLoader").classList.add("active");
-        let data=document.querySelectorAll(`.tableBody tr:nth-child(${ind+1}) td`);
-         let selectedStat=data[5].childNodes[0].value;
+      let data;
+let selectedStat;
+
+    if(type==="desktop"){
+          data=document.querySelectorAll(`.tableBody tr:nth-child(${ind+1}) td`);
+           selectedStat=data[5].childNodes[0].value;
             
-         if(selectedStat==="default"){
+         
+  
+    }
+    else{
+          selectedStat=document.querySelector(`.mobileTable>div:nth-child(${ind+1})>div:last-child select`).value;
+          
+    }
+     if(selectedStat==="default"){
               selectedStat="Assigned";
            };
-  
-    
+
+
        
 
 
@@ -59,7 +70,7 @@ async function handleUpdate(ind)
               <h3 className="text-center border rounded p-2 mb-2">Task List <div className="newTaskLoader"></div></h3></div>
          <div className=" p-2 activeTaskTable  col-lg-10 col-md-11">
             <div className="border rounded">
-                <table className="col-12 text-center  "  >
+                <table className="col-12 text-center  deskTable"  >
                         <thead>
                                     <th>Task</th>                                           
                         <th>Description</th>
@@ -72,11 +83,12 @@ async function handleUpdate(ind)
                            <th>Update</th>
                         </thead>
                         <tbody className="tableBody  ">
-                          {user["ActiveTasks"]?user["ActiveTasks"].map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>  it!=="id" ).map(key=><td className="col-2">{item[key]}</td>)}<td className="col-2"><select onChange={()=>handleUpdate(index)}><option value={"default"}>Select</option><option value={"toDo"}>To Do</option><option value={"WIP"}>Work In progress</option><option value={"PA"}>Pending Approval</option><option value={"Done"}>Completed</option> </select></td>   </tr>):""}
+                          {user["ActiveTasks"]?user["ActiveTasks"].map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>  it!=="id" ).map(key=><td className="col-2">{item[key]}</td>)}<td className="col-2"><select onChange={()=>handleUpdate(index,"desktop")}><option value={"default"}>Select</option><option value={"toDo"}>To Do</option><option value={"WIP"}>Work In progress</option><option value={"PA"}>Pending Approval</option><option value={"Done"}>Completed</option> </select></td>   </tr>):""}
 
                         </tbody>
                  
                 </table>
+                <div className="mobileTable"> {user["ActiveTasks"]?user["ActiveTasks"].map((item,index)=><div className="my-2 "  >{Object.keys(item).filter(it=>it!=="id").map(key=><div className=" d-flex  align-items-center justify-content-between    ps-2"> <span className=" " >{key}</span><span className="col-8">{item[key]}</span></div>)}<div className=" p-2"><select onChange={()=>handleUpdate(index,"mobile")}><option value={"default"}>Select</option><option value={"toDo"}>To Do</option><option value={"WIP"}>Work In progress</option><option value={"PA"}>Pending Approval</option><option value={"Done"}>Completed</option> </select></div>   </div>):""}</div>
                 </div>
              
          </div>

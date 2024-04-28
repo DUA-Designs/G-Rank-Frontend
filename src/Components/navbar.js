@@ -49,12 +49,15 @@ export function Navbar(){
 
                   <div className="offcanvas offcanvas-start" data-bs-backdrop="static" tabIndex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
                     <div className="offcanvas-header">
-                      <h5 className="offcanvas-title" id="staticBackdropLabel">  <div  className="col-12  mt-1 mb-3 p-2 d-flex align-items-center justify-content-between"> <img src={grank} alt="G-rank Digital Services Private Limited" className="img-fluid  "  style={{width:"150px"}}></img>  </div>
-                            <ul  id='profile' >
-                              <li className='row'><div className='col-2'><img className="img-fluid" src={profilePic} alt='profilePicture'></img></div><span className='col-8'><b>Hi   {user["Name"]}</b></span> <span className='col-2 gear'  ><Link to={"/settings"} className='myLinks'><i className="fi fi-tr-process"></i></Link></span></li>
-                              <Link className='myLinks' to={"/myProfile"}>View My Info</Link>
+                    
+                      <h5 className="offcanvas-title" id="staticBackdropLabel">  <div  className="col-12  mt-1 mb-3 p-2 d-flex align-items-center justify-content-between"> <img src={grank} alt="G-rank Digital Services Private Limited" className="img-fluid  "  style={{width:"150px"}}></img> <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button> </div>
+                            <ul   >
+                              <li className='row'><div className='col-4'><img className="img-fluid" src={profilePic} alt='profilePicture'></img></div><span className='col-6'><b>Hi   {user["Name"]}</b></span> <span className='col-2 gear'  ><Link to={"/settings"} className='myLinks'><i className="fi fi-tr-process"></i></Link></span></li>
+
+                              <li><Link className='myLinks' to={"/myProfile"}>View My Info</Link></li>
                             </ul></h5>
-                      <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                               
+                     
                     </div>
                     <div className="offcanvas-body">
                       <div>

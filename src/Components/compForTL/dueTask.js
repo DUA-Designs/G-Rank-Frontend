@@ -11,31 +11,61 @@ export function DueTask( ){
     const dueTasks=useSelector((state)=>state.tasks.value);
     const user=useSelector(state=>state.user.value);
     const [loader,setLoader]=useState([]);
+    const [size,setSize]=useState(0);
    
     const dispatch=useDispatch();
 
-    async function handleTaskMove(ind)
-    {
-        let data=document.querySelectorAll(`.tableBody tr:nth-child(${ind+1}) td`);
-         let selectedDev=data[5].childNodes[0].value;
+    async function handleTaskMove(ind,type)
+    {  
+      let Task;
+let Description;
+let Department;
+let Deadline;
+let data;
+let selectedDev;
+       if(type==="Desktop"){
+          data=document.querySelectorAll(`.tableBody tr:nth-child(${ind+1}) td`);
+          selectedDev=data[5].childNodes[0].value;
          
          if(selectedDev==="default"){
           alert("Please assign a dev");
           return ""};
-            let arr=loader;
+           
+         let arr=loader;
     arr[ind]=true;
       setLoader([...arr]);
-        
        
         
             
     
-        let Task=data[1].innerHTML;
-        let Description=data[2].innerHTML;
-        let Department=data[3].innerHTML;
-        let Deadline=data[4].innerHTML;
+          Task=data[1].innerHTML;
+          Description=data[2].innerHTML;
+          Department=data[3].innerHTML;
+          Deadline=data[4].innerHTML;
+       }
+       else{
+       data=dueTasks[ind];
+      //  div:nth-child(${ind+1})>div:nth-child(2) select
+        selectedDev=document.querySelector(`.mobileTable>div:nth-child(${ind+1}) div:last-child select`).value;
+      
+          
+         if(selectedDev==="default"){
+          alert("Please assign a dev");
+          return ""};
+           let arr=loader;
+    arr[ind]=true;
+      setLoader([...arr]);
 
- //http://localhost:8000/addToActiveTasks
+               Task=data.Task;
+          Description=data.Description;
+          Department=data.Department;
+          Deadline=data.Deadline;
+
+ 
+       }
+
+
+//  http://localhost:8000/addToActiveTasks
         const res=await axios.get(`https://g-rank-backend.onrender.com/addToActiveTasks?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}&Dev=${selectedDev}&id=${dueTasks[ind].id}`);
        
             console.log(res.data);
@@ -45,11 +75,13 @@ export function DueTask( ){
 
     await new Promise(resolve=>setTimeout(()=>{
         resolve("This is for laoding time")
-    },2000));
+    },1000));
       setLoader([...arr2]);
                
     
     }
+
+    
  
     // async function getTasks(){
     //    let response=await axios.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vR4bqhRdZBrGt_fB8r0kRDdDXDuG4OHiFzL7vrlJow1NL30mKCkjwcLhQ7_MgL3_7FNQOc3uARJ8fS2/pub?output=csv');
@@ -73,7 +105,7 @@ export function DueTask( ){
     useEffect(()=>{
      dispatch(tasksAPI());
        let arr=[];
-     for(let i=0;i<dueTasks.lenght;i++){
+     for(let i=0;i<dueTasks.length;i++){
   
                             arr.push(false);
         
@@ -96,7 +128,7 @@ export function DueTask( ){
               <h3 className="text-center border rounded p-2 mb-2">Due Tasks</h3></div>
          <div className=" p-2 activeTaskTable  col-lg-10 col-md-11">
             <div className="border rounded">
-                <table className="col-12 text-center  "  >
+           <table className="col-12 text-center   deskTable"  >
                         <thead>
                            <th>Id</th>  
                                     <th>Task</th>                                           
@@ -108,11 +140,15 @@ export function DueTask( ){
                          <th>Add</th>
                         </thead>
                         <tbody className="tableBody">
-                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><td className=" ">{item[key]}</td>)}<td className=""><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select></td><td   className=" d-flex align-items-center justify-content-center   position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={( )=>handleTaskMove(index)}><i class="fi fi-tr-square-plus"></i></span> } </div>   </td> </tr>):""}
+                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><td className=" ">{item[key]}</td>)}<td className=""><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select></td><td   className=" d-flex align-items-center justify-content-center   position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={( )=>handleTaskMove(index,"Desktop")}><i class="fi fi-tr-square-plus"></i></span> } </div>   </td> </tr>):""}
 
                         </tbody>
                  
-                </table>
+                </table> 
+                <div className="mobileTable"> {dueTasks?dueTasks.map((item,index)=><div className="my-2 "  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><div className=" d-flex  align-items-center justify-content-between    ps-2"> <span className=" " >{key}</span><span className="col-8">{item[key]}</span></div>)}<div className="d-flex align-items-center  justify-content-between  ps-2 "><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select> <div   className="col-8 d-flex align-items-center justify-content-center   position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={()=>handleTaskMove(index,"mobile")} ><i class="fi fi-tr-square-plus"></i></span> } </div></div>   </div> </div>):""}</div>
+                 
+
+
                 </div>
              
          </div>

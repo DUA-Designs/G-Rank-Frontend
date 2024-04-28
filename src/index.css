@@ -834,5 +834,17 @@ padding:2px 5px;
  .addButton  i{
  font-size: 20px;
  }
+  .mobileTable{
+    display: block;
+  }
+  .deskTable{
+    display: none;
+  }
+}
+@media screen and (min-width:768px) {
+  .mobileTable{
+    display: none;
+  }
   
 }
+ 

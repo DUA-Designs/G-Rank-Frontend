@@ -46,7 +46,7 @@ export function NewTask( ){
               <h3 className="text-center border rounded p-2 mb-2">Active Tasks <div className="newTaskLoader"></div></h3>  </div>
          <div className=" p-2 activeTaskTable col-lg-10 col-md-11">
             <div className="border rounded ">
-                <table className="col-12 text-center  "  >
+                <table className="col-12 text-center deskTable "  >
                         <thead>
                                     <th>Task</th>                                           
                         <th>Description</th>
@@ -63,6 +63,7 @@ export function NewTask( ){
                         </tbody>
                 
                 </table>
+                <div className="mobileTable"> {activeTasks?activeTasks.map((item,index)=><div className="my-2 "  >{Object.keys(item).filter(it=>it!=="id").map(key=><div className=" d-flex  align-items-center justify-content-between    ps-2"> <span className=" " >{key}</span><span className="col-8">{item[key]}</span></div>)} <div   className="p-2 addButton rounded  "  onClick={()=>handleActiveTaskDelete(index)} ><i class="fi fi-tr-square-minus"></i></div>  </div>):""}</div>
                 </div>
              
          </div>
