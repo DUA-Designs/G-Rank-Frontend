@@ -60,7 +60,8 @@ export   function Home( {page}){
   }   
 
       async  function getQuote(){
-       
+      
+           
         const url = 'https://quotes-by-api-ninjas.p.rapidapi.com/v1/quotes?category=inspirational';
         const options = {
           method: 'GET',
@@ -73,6 +74,12 @@ export   function Home( {page}){
         try {
           const response = await fetch(url ,options  );
           const result = await response.json();
+                let quote=result[0].quote;
+          let author=result[0].author;
+         let currentDate=date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear();
+          let localQuote={quote,author,currentDate};
+        
+          localStorage.setItem("localQuote",JSON.stringify(localQuote));
       
         
             setAuthor(result[0].author);
@@ -82,6 +89,13 @@ export   function Home( {page}){
         } catch (error) {
           console.error(error);
         }
+
+      
+      
+
+      
+      
+
 
         }
 
@@ -94,9 +108,30 @@ export   function Home( {page}){
     
           
           scatter();
-         
+         console.log(localStorage.getItem("localQuote"));
+          if(localStorage.getItem("localQuote")){
         
-         getQuote();
+            let currentDate=date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear();
+      let savedDate=JSON.parse(localStorage.getItem("localQuote")).currentDate;
+     
+        if( currentDate===savedDate){
+           let  {quote,author}=JSON.parse(localStorage.getItem("localQuote")) ;
+   
+              
+            setMyQuote(quote);
+             setAuthor(author);
+
+        }
+        else{
+               getQuote();
+        }
+
+
+          }
+          else{
+            getQuote();
+          }
+       
           
            
 
