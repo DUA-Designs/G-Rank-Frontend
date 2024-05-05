@@ -108,7 +108,7 @@ export   function Home( {page}){
     
           
           scatter();
-         console.log(localStorage.getItem("localQuote"));
+       
           if(localStorage.getItem("localQuote")){
         
             let currentDate=date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear();

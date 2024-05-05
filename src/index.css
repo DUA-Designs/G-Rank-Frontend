@@ -676,29 +676,23 @@ padding:2px 5px;
 
 
 }
-.loadingCircle,.failure{
+.Success{
+  background-color: rebeccapurple;
+}
+.loadingCircle,.failure,.Success{
   position: absolute;
  opacity: 0;
  z-index: -1;
  transition:all 0.3s linear !important;
    
 }
-.Success{
-    position: absolute;
- opacity: 0;
- z-index: -1;
- transition:all 0.3s linear !important;
-}
-.loadingCircle.showMe,.failure.showMe{
+ 
+.loadingCircle.showMe,.failure.showMe,.Success.showMe{
   opacity: 1;
-   z-index: 1;
+   z-index: 2;
   
 }
-.Success.showMe{
-
-  opacity: 1;
-   z-index: 1;
-}
+ 
 #login{
   transform: translateY(20px);
    transition:all 0.3s linear !important;

@@ -1,4 +1,4 @@
-import {  createRef, useEffect, useState} from "react";
+import {  createRef, useEffect, useRef, useState} from "react";
 import { dots, failure, grank, loadingCircle, partner, success } from "./media";
  
 import { Player    } from '@lottiefiles/react-lottie-player';
@@ -41,7 +41,7 @@ export function App() {
   const [login,setLogin]=useState(true);
   const user=useSelector(state=>state.user.value);
   const session=useSelector(state=>state.session.value);
-  const successPlayer=createRef();
+ const successLogin=useRef();
   const failurePlayer=createRef();
 
  
@@ -59,8 +59,9 @@ export function App() {
         e.preventDefault();
         let login=document.getElementById("login");
         let loadingCircle=document.querySelector(".loadingCircle");
-         let successLottie=document.querySelector(".Success");
          let failure=document.querySelector(".failure");
+           let successLottie=document.querySelector(".Success");
+
         login.classList.add("hideMe");
                await new Promise((resolve)=>setTimeout(()=>{resolve("This is for loading time")},500));
         loadingCircle.classList.add("showMe");
@@ -95,6 +96,8 @@ export function App() {
                          loadingCircle.classList.remove("showMe");
                           await new Promise((resolve)=>setTimeout(()=>{resolve("This is for loading time")},100));
                                  successLottie.classList.add("showMe");
+                              successLogin.current.play();
+                                //  successLottie.current.play();
                                    await new Promise((resolve)=>setTimeout(()=>{resolve("This is for loading time")},100));
                          
                        
@@ -259,12 +262,12 @@ if(session==="Logout"){
                         <label className="col-12 text-end my-2"><a href="#forgot" className="text-decoration-none">Forgot Password?</a></label>
                         
                         <div className="col-12 loginContainer   ">
-                        <button type="submit" className="btn   my-2 col-4 mx-auto d-block" id="login">login</button> 
-                           <Player loop autoplay    ref={successPlayer}    style={{width:"120px" ,height:"120px" }} src={success}
-	    className=" mx-auto Success start-50  translate-middle" /> 
+                        <button type="submit" className="btn   my-2 col-4 mx-auto d-block" id="login">Login</button> 
+                            
                         <Player loop autoplay style={{width:"120px" ,height:"120px" }} src={loadingCircle}
 	    className=" mx-auto loadingCircle start-50  translate-middle" />
-       
+       <Player   loop={false} autoplay={false}   style={{width:"120px" ,height:"120px" }} src={success} ref={successLogin}
+	    className=" mx-auto Success start-50  translate-middle" />
       <Player  loop={false} autoplay={false} ref={failurePlayer}    style={{width:"120px" ,height:"120px" }} src={failure}
 	    className=" mx-auto failure start-50  translate-middle" />
 

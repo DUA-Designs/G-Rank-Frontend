@@ -5,10 +5,12 @@ import { useEffect, useState   } from "react";
 import axios from "axios";
 import { tasksAPI } from "../../redux/dueTaskSlice";
 import { userAPI } from "../../redux/counterSlice";
+import { activeTasksAPI } from "../../redux/activeTasksSlice";
  
 
 export function DueTask( ){
     const dueTasks=useSelector((state)=>state.tasks.value);
+    const activeTasks=useSelector(state=>state.activeTasks.value);
     const user=useSelector(state=>state.user.value);
     const [loader,setLoader]=useState([]);
     const [size,setSize]=useState(0);
@@ -78,7 +80,7 @@ let selectedDev;
     },1000));
       setLoader([...arr2]);
                
-    
+    dispatch(activeTasksAPI());
     }
 
     
@@ -140,12 +142,12 @@ let selectedDev;
                          <th>Add</th>
                         </thead>
                         <tbody className="tableBody">
-                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><td className=" ">{item[key]}</td>)}<td className=""><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select></td><td   className=" d-flex align-items-center justify-content-center   position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={( )=>handleTaskMove(index,"Desktop")}><i class="fi fi-tr-square-plus"></i></span> } </div>   </td> </tr>):""}
+                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><td className="  ">{item[key]}</td>)}<td className=" ">{activeTasks.filter(f2=>f2.id===item.id).length===1?"true":<select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select>}</td><td   className=" d-flex align-items-center justify-content-center   position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={( )=>handleTaskMove(index,"Desktop")}><i class="fi fi-tr-square-plus"></i></span> } </div>   </td> </tr>):""}
 
                         </tbody>
                  
                 </table> 
-                <div className="mobileTable"> {dueTasks?dueTasks.map((item,index)=><div className="my-2 "  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><div className=" d-flex  align-items-center justify-content-between    ps-2"> <span className=" " >{key}</span><span className="col-8">{item[key]}</span></div>)}<div className="d-flex align-items-center  justify-content-between  ps-2 "><select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select> <div   className="col-8 d-flex align-items-center justify-content-center   position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={()=>handleTaskMove(index,"mobile")} ><i class="fi fi-tr-square-plus"></i></span> } </div></div>   </div> </div>):""}</div>
+                <div className="mobileTable"> {dueTasks?dueTasks.map((item,index)=><div className="my-2 "  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><div className=" d-flex  align-items-center justify-content-between    ps-2"> <span className=" " >{key}</span><span className="col-8">{item[key]}</span></div>)}<div className="d-flex align-items-center  justify-content-between  ps-2 ">{activeTasks.filter(f2=>f2.id===item.id).length===1?"true":<select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select> } <div   className="col-8 d-flex align-items-center justify-content-center   position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={()=>handleTaskMove(index,"mobile")} ><i class="fi fi-tr-square-plus"></i></span> } </div></div>   </div> </div>):""}</div>
                  
 
 
