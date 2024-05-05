@@ -4,9 +4,10 @@ import Employees from './employeeSlice';
 import formActiveSlice from './formSlice';
 import tasksReducer from './dueTaskSlice';
 import activeTasksReducer from './activeTasksSlice';
+import sessionHandler from './sessionHandler';
 
 export default configureStore({
   reducer: {
-    user:userReducer,employees:Employees,formActive: formActiveSlice,tasks:tasksReducer,activeTasks:activeTasksReducer
+    user:userReducer,employees:Employees,formActive: formActiveSlice,tasks:tasksReducer,activeTasks:activeTasksReducer,session:sessionHandler
   }
 })

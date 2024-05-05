@@ -12,6 +12,7 @@ import {BrowserRouter} from 'react-router-dom';
 import { userPages } from "./Components/interfaces";
 import { WDRoutes } from "./Components/compForWD/WDInterface";
 import axios from "axios";
+import { userLogin } from "./redux/sessionHandler";
  
  
  
@@ -39,8 +40,10 @@ export function App() {
 
   const [login,setLogin]=useState(true);
   const user=useSelector(state=>state.user.value);
+  const session=useSelector(state=>state.session.value);
   const successPlayer=createRef();
   const failurePlayer=createRef();
+
  
  
  
@@ -103,7 +106,7 @@ export function App() {
                          
                                await new Promise((resolve)=>setTimeout(()=>{resolve("This is for loading time")},100));
                             
-                          
+                          dispatch(userLogin());
                       setLogin(false);
                       
                   
@@ -151,6 +154,8 @@ export function App() {
   }
 
   async function checkLastLogin(){
+
+     
 
 
     if(localStorage.getItem("lastlogin")!==null ){
@@ -219,10 +224,13 @@ export function App() {
   useEffect(   ()=>{
  checkLastLogin();
  
+if(session==="Logout"){
+  setLogin(true);
+   setCheckSession(true);
+}
 
 
-
-  },[]);
+  },[session]);
  
 
  

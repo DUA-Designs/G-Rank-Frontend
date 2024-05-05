@@ -90,7 +90,7 @@ export   function Home( {page}){
           setDate(new Date());
         },1000);
 
-       
+        checkSignIn();  
     
           
           scatter();
@@ -98,7 +98,7 @@ export   function Home( {page}){
         
          getQuote();
           
-          checkSignIn();   
+           
 
        
         

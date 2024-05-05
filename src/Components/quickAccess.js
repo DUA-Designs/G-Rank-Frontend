@@ -2,8 +2,10 @@
 import { useEffect, useRef } from "react"
 
  
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { time } from "../media";
+import {  userLogout } from "../redux/sessionHandler";
+
  
  
 
@@ -17,17 +19,29 @@ export function QuickAccess({page} ){
 
        const user=useSelector(state=>state.user.value);
  
+       const dispatch=useDispatch();
+ 
  
   async function handleLogOut(){
     
     localStorage.removeItem("lastlogin");
-    document.querySelector(".sectionContainer").style.opacity="0.1";
- 
- 
- 
+//    let links=document.querySelectorAll(".myLinks span");
+   
+  dispatch(userLogout());
+//   for(let i=0;i<links.length;i++){
+//  if(links[i].innerHTML.indexOf("Home")>=0){
+//    links[i].click();
+//        console.log(links[i].innerHTML)
+//        break;
+//  }
+       
+   
+//    }
+  //  window.location.href="/G-Rank-Frontend";
+//  await new Promise(resolve=>setTimeout(()=>{resolve("THis is for loading time")},2000));
 
- localStorage.removeItem("sessionTime","true");
- window.location.href="/G-Rank-Frontend";
+//  localStorage.setItem("sessionTime","true");
+//  window.location.href="/G-Rank-Frontend";
    
  
   
@@ -61,7 +75,7 @@ if (timeSound.current !== null) {
         await new Promise((resolve)=>setTimeout(()=>{resolve("This is for loading time")},60));
         if(x===2){
           document.getElementById("sessionPopUp").classList.remove("showMe");
-          localStorage.setItem("sessionTime","false"); 
+          // localStorage.setItem("sessionTime","false"); 
           break;
         }
      
@@ -130,7 +144,7 @@ if (timeSound.current !== null) {
           
            localStorage.removeItem("lastlogin");
          window.location.href="/G-Rank-Frontend";
-           localStorage.removeItem("sessionTime");
+          //  localStorage.removeItem("sessionTime");
         
       
       }
