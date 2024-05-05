@@ -1,30 +1,29 @@
 {
   "files": {
-    "main.css": "/G-Rank-Frontend/static/css/main.65889c73.css",
-    "main.js": "/G-Rank-Frontend/static/js/main.866c1668.js",
+    "main.css": "/G-Rank-Frontend/static/css/main.9a855469.css",
+    "main.js": "/G-Rank-Frontend/static/js/main.e523f0df.js",
     "static/media/cool-background-cyan.png": "/G-Rank-Frontend/static/media/cool-background-cyan.371444d0b872f54f5a08.png",
     "static/media/4907157.jpg": "/G-Rank-Frontend/static/media/4907157.3261e91c47de7491b551.jpg",
     "static/media/message-incoming-132126.mp3": "/G-Rank-Frontend/static/media/message-incoming-132126.71ffe8d5a3a0e9bdc45d.mp3",
     "static/media/error.png": "/G-Rank-Frontend/static/media/error.d4ebd8fcdf772b9f9131.png",
-    "static/media/night.png": "/G-Rank-Frontend/static/media/night.0e663af26f61d593774a.png",
     "static/media/deadline.png": "/G-Rank-Frontend/static/media/deadline.6c118f045c1b2e1fb5df.png",
-    "static/media/sunset.png": "/G-Rank-Frontend/static/media/sunset.d16fee6e9727a1cc47e2.png",
     "static/media/document-review.png": "/G-Rank-Frontend/static/media/document-review.74dad58c4575f343376c.png",
     "static/media/budget.png": "/G-Rank-Frontend/static/media/budget.725710958cc9422abde3.png",
     "static/media/profile.png": "/G-Rank-Frontend/static/media/profile.5faf09a7795d28bf5a2b.png",
     "static/media/concept.png": "/G-Rank-Frontend/static/media/concept.877a36be2d3e7b3678b8.png",
-    "static/media/morning-coffee.png": "/G-Rank-Frontend/static/media/morning-coffee.1b608079acffcbbac564.png",
     "static/media/task.png": "/G-Rank-Frontend/static/media/task.d8a12c1e6bcd9ba6dcc3.png",
     "static/media/air.png": "/G-Rank-Frontend/static/media/air.d35f147b52d3c5c3f9ca.png",
-    "static/media/afternoon.png": "/G-Rank-Frontend/static/media/afternoon.aa5e13951e1fb1e11d13.png",
+    "static/media/night.png": "/G-Rank-Frontend/static/media/night.8dd85e7b1be4f2240819.png",
+    "static/media/sunrise.png": "/G-Rank-Frontend/static/media/sunrise.1438502eac0278be7ec4.png",
     "static/media/data-collection.png": "/G-Rank-Frontend/static/media/data-collection.63c11b9e9828af552803.png",
     "static/media/pie-chart.png": "/G-Rank-Frontend/static/media/pie-chart.68764b299e7da9dcc534.png",
+    "static/media/science.png": "/G-Rank-Frontend/static/media/science.43862d3c2af33e3f39d1.png",
     "index.html": "/G-Rank-Frontend/index.html",
-    "main.65889c73.css.map": "/G-Rank-Frontend/static/css/main.65889c73.css.map",
-    "main.866c1668.js.map": "/G-Rank-Frontend/static/js/main.866c1668.js.map"
+    "main.9a855469.css.map": "/G-Rank-Frontend/static/css/main.9a855469.css.map",
+    "main.e523f0df.js.map": "/G-Rank-Frontend/static/js/main.e523f0df.js.map"
   },
   "entrypoints": [
-    "static/css/main.65889c73.css",
-    "static/js/main.866c1668.js"
+    "static/css/main.9a855469.css",
+    "static/js/main.e523f0df.js"
   ]
 }
