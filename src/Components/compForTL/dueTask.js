@@ -28,7 +28,10 @@ let selectedDev;
        if(type==="Desktop"){
           data=document.querySelectorAll(`.tableBody tr:nth-child(${ind+1}) td`);
           selectedDev=data[5].childNodes[0].value;
-         
+         if(!selectedDev){
+           alert("The Task has  been assigned already!");
+          return "";
+         }
          if(selectedDev==="default"){
           alert("Please assign a dev");
           return ""};
@@ -50,8 +53,11 @@ let selectedDev;
       //  div:nth-child(${ind+1})>div:nth-child(2) select
         selectedDev=document.querySelector(`.mobileTable>div:nth-child(${ind+1}) div:last-child select`).value;
       
-          
-         if(selectedDev==="default"){
+           if(!selectedDev){
+           alert("The Task has  been assigned already!");
+          return "";
+         }
+         if(selectedDev==="default" || !selectedDev){
           alert("Please assign a dev");
           return ""};
            let arr=loader;
@@ -106,6 +112,7 @@ let selectedDev;
     // }
     useEffect(()=>{
      dispatch(tasksAPI());
+     dispatch(activeTasksAPI());
        let arr=[];
      for(let i=0;i<dueTasks.length;i++){
   
