@@ -1,5 +1,5 @@
 import {  createRef, useEffect, useRef, useState} from "react";
-import { dots, failure, grank, loadingCircle, partner, success } from "./media";
+import { dots, failure, grank, loadingCircle, partner, success,progress_tracking,usability_testing } from "./media";
  
 import { Player    } from '@lottiefiles/react-lottie-player';
 
@@ -247,11 +247,13 @@ if(session==="Logout"){
       {login?<div style={{height:"100%",display:"grid"}}  >
         {checkSession?<div className="d-grid align-items-center" >
            <Player loop autoplay style={{width:`${window.innerWidth/2}px`,height:`${window.innerHeight/2}px`}} src={dots}
-	    />  </div>:<div className="row   shadow rounded   py-4"  >
+	    />  </div>:<div className="row         py-4 position-relative  "  >
             <div  className="col-12  my-1 ">
               <img src={grank} alt="G-rank Digital Services Private Limited" className="img-fluid"  style={{width:"150px"}}></img><img src={partner} alt="google_partner"></img>
             </div>
-            <div className="col-lg-5 col-md-8 bg-light rounded shadow mx-auto p-3  d-grid align-items-center">
+       
+
+            <div className="col-lg-5 col-md-8 bg-light rounded shadow mx-auto p-3  d-grid align-items-center" style={{zIndex:2}}>
             
            
               <h3 className="col-12  mb-4" ><span style={{color:"#0174b1",fontWeight:"800" }}>Employee Login</span >  </h3>
@@ -277,7 +279,7 @@ if(session==="Logout"){
             </form>
             <div id="error" className=" "></div>
            
-            </div>
+            </div>  <img src={usability_testing} alt="svg" className="loginSVG "></img>  
             
             
          </div>}

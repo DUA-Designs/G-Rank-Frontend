@@ -3,6 +3,7 @@ import { Navbar } from "../navbar";
 import { QuickAccess } from "../quickAccess";
 import './csm.css';
 import axios from "axios";
+import { add_tasks_re } from "../../media";
 
 export function RequestForm( ){
  
@@ -32,9 +33,9 @@ async function handleTaskSubmit(event){
       <div className="col-10 mx-auto   border sectionContainer" >
       < QuickAccess page={"RequestForm"}/>
 
-         <div className="row  marginTop">
+         <div className="row  marginTop" style={{overflow:"hidden"}}>
          
-         <div className="col-12 p-4 ">
+         <div className="col-12 p-4 backColor">
                  <form className="my-4"  onSubmit={(event)=>handleTaskSubmit(event)} >
                               <div className="row">
                                   <div className="mb-3 col-lg-6 col-md-6">
@@ -77,6 +78,8 @@ async function handleTaskSubmit(event){
                   </form>
           
          </div>
+             <div className="col-lg-2  tlSVg" >
+          <img src={add_tasks_re} alt="svg" className=" img-fluid"></img></div>
          </div>
 
 

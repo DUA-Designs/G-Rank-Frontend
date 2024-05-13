@@ -4,6 +4,7 @@ import { QuickAccess } from "../quickAccess";
 import { useEffect, useState } from "react";
 import { activeTasksAPI } from "../../redux/activeTasksSlice";
 import axios from "axios";
+import { accept_tasks, completed_tasks } from "../../media";
  
  
 
@@ -41,11 +42,11 @@ export function NewTask( ){
 
         <div className="col-10 mx-auto  border sectionContainer" >
         < QuickAccess page={"New Task"}/>
-          <div className=" ">
-             <div className="p-2">
-              <h3 className="text-center border rounded p-2 mb-2">Active Tasks <div className="newTaskLoader"></div></h3>  </div>
-         <div className=" p-2 activeTaskTable col-lg-10 col-md-11">
-            <div className="border rounded ">
+          <div className=" row">
+             <div className="p-2 backColor">
+              <h3 className="text-center border rounded p-2 mb-2 ">Active Tasks <div className="newTaskLoader"></div></h3>  </div>
+         <div className=" p-2 activeTaskTable col-lg-10 col-md-11  ">
+            <div className="border rounded backColor">
                 <table className="col-12 text-center deskTable "  >
                         <thead>
                                     <th>Task</th>                                           
@@ -67,6 +68,8 @@ export function NewTask( ){
                 </div>
              
          </div>
+           <div className="col-lg-2  tlSVg" >
+          <img src={completed_tasks} alt="svg" className=" img-fluid"></img></div>
         
                 
                  

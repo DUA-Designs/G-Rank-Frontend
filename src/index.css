@@ -52,6 +52,8 @@ html{
   background-color: rgb(250, 245, 245);
   width: 90% !important;
      height: 100vh;
+     position: relative;
+     z-index: 3;
   
    
   
@@ -604,7 +606,9 @@ padding:2px 5px;
   font-size: 15px;
  
   padding: 0.5rem;
-  background-color: #e6e2e2;
+  background-color:  #e6e2e2; ;
+  /* #e6e2e2; */
+  
   
  }
  .activeTaskTable tbody{
@@ -615,11 +619,25 @@ padding:2px 5px;
   
  }
  .activeTaskTable  {
- 
+ /* background-color: #faf5f5; */
+ position: relative;
   height: 550px;
   overflow-y: auto;
   overflow-x: hidden;
+  /* background-image: url(./media/undraw_task_re_wi3v.svg);
+  background-position: bottom right;
+  background-size: 30%;
+  background-repeat: no-repeat; */
+  z-index: 3;
+   
+ 
+   
  }
+ .backColor{
+  background-color:#faf5f5 ;
+  z-index: 5;
+ }
+ 
   .activeTaskTable>div{
     width: 100%;
    
@@ -756,7 +774,43 @@ padding:2px 5px;
   opacity: 1;
   transition: 0.1s linear;
 }
+
+.loginSVG{
+  position: absolute;
+  right:0;
+  bottom: 0;
+  width: 350px;
+  height: auto;
+   
+
+
+}
+.bottomSVG{
+   position: absolute;
+  right:0;
+top: 0;
+  width: 350px;
+  height: auto;
+ 
+ 
+ 
+ 
+}
+.tlSVg{
+  z-index: 1;
+   position: absolute;
+  right:0;
+bottom: 0;
+  width: 350px;
+  height: auto;
+}
 @media screen and (max-width:768px) {
+  .loginSVG{
+ display: none;
+  }
+  .tlSVg{
+      width: 250px;
+  }
   #nav-bar{
     width: 0%;
     overflow: hidden;

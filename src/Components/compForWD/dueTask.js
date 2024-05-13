@@ -6,6 +6,7 @@ import { QuickAccess } from "../quickAccess";
 import { useSelector ,useDispatch} from "react-redux";
 import { userAPI } from "../../redux/counterSlice";
 import axios from 'axios';
+import { accept_tasks } from "../../media";
  
 
 export function Engage( ){
@@ -65,11 +66,11 @@ let selectedStat;
 
       <div className="col-10 mx-auto   border sectionContainer" >
       < QuickAccess page={"Engage"}/>
-           <div className=" ">
-             <div className="p-2">
+           <div className=" row" style={{overflow:"hidden"}}>
+             <div className="p-2 backColor">
               <h3 className="text-center border rounded p-2 mb-2">Task List <div className="newTaskLoader"></div></h3></div>
          <div className=" p-2 activeTaskTable  col-lg-10 col-md-11">
-            <div className="border rounded">
+            <div className="border rounded backColor">
                 <table className="col-12 text-center  deskTable"  >
                         <thead>
                                     <th>Task</th>                                           
@@ -93,7 +94,8 @@ let selectedStat;
              
          </div>
         
-                
+                   <div className="col-lg-2  tlSVg" >
+          <img src={accept_tasks} alt="svg" className=" img-fluid"></img></div>
                  
         </div>
       

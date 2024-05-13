@@ -19,7 +19,18 @@ import dots from './media/Animation - 1710053361002 (1).json';
 import loadingCircle from './media/Animation - 1711948027731.json';
 import success from './media/Animation - 1712136246321.json';
 import failure from './media/Animation - 1711954586461.json';
+import progress_tracking from './media/undraw_progress_tracking_re_ulfg.svg';
+import usability_testing from './media/undraw_usability_testing_re_uu1g.svg';
+import mornings_re_cofi from './media/undraw_mornings_re_cofi.svg';
+import moonlight from './media/undraw_moonlight_-5-ksn.svg';
+import sunny_day from './media/undraw_sunny_day_re_gyxr.svg';
+import city_life from './media/undraw_city_life_gnpr.svg';
+import task_re from './media/undraw_task_re_wi3v.svg';
+import accept_tasks from './media/undraw_accept_tasks_re_09mv.svg';
+import completed_tasks from './media/undraw_completed_tasks_vs6q.svg';
+import add_tasks_re from './media/undraw_add_tasks_re_s5yj.svg';
 
 
 
-export {grank,partner,morning,review,air,profilePic,noon,evening,night,pie,taxable,poi,track,time,cool,nullNotifications,newTask,dots,loadingCircle,success,failure};
+
+export {grank,partner,morning,review,air,profilePic,noon,evening,night,pie,taxable,poi,track,time,cool,nullNotifications,newTask,dots,loadingCircle,success,failure,progress_tracking,usability_testing,mornings_re_cofi,moonlight,sunny_day,city_life,task_re,accept_tasks,completed_tasks,add_tasks_re};

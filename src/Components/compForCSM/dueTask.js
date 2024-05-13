@@ -4,6 +4,7 @@ import { QuickAccess } from "../quickAccess";
 import { useEffect  } from "react";
  
 import { tasksAPI } from "../../redux/dueTaskSlice";
+import { accept_tasks, task_re } from "../../media";
  
 
 export function DueTask( ){
@@ -45,11 +46,11 @@ export function DueTask( ){
 
         <div className="col-10 mx-auto  border sectionContainer" >
         < QuickAccess page={"DueTask"}/>
-        <div className="marginTop">
-             <div className="p-2">
+        <div className="marginTop ">
+             <div className="p-2 backColor">
               <h3 className="text-center border rounded p-2 mb-2">Due Tasks</h3></div>
          <div className=" p-2 activeTaskTable ">
-            <div className="border rounded">
+            <div className="border rounded backColor">
                 <table className="col-12 text-center  "  >
                         <thead>
                         <th>Id</th>
@@ -69,6 +70,8 @@ export function DueTask( ){
                 </div>
              
          </div>
+         <div className="col-lg-2  tlSVg" >
+          <img src={task_re} alt="svg" className=" img-fluid"></img></div>
         
                 
                  

@@ -1,6 +1,6 @@
 
  import { useEffect, useState } from "react";
-import { air, cool, evening, morning, night, noon, pie, poi, review, taxable, track } from "../media";
+import { air, cool, evening, morning, night, noon, pie, poi, review, taxable, track,mornings_re_cofi, moonlight, sunny_day, city_life } from "../media";
 import { Navbar } from "./navbar";
 import { QuickAccess } from "./quickAccess";
  
@@ -17,7 +17,7 @@ import { userAPI } from "../redux/counterSlice";
 const monthsInArray= ["January","February","March","April","May","June","July",
             "August","September","October","November","December"];
 const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const greetingTimes=[{greet:"Good Morning",image:morning,rangeStart:6,rangeEnd:12},{greet:"Good Noon",image:noon,rangeStart:12,rangeEnd:16},{greet:"Good Evening",image:evening,rangeStart:16,rangeEnd:20},{greet:"Good Night",image:night,rangeStart:20,rangeEnd:24}];
+const greetingTimes=[{greet:"Good Morning",image:mornings_re_cofi,rangeStart:6,rangeEnd:12},{greet:"Good Noon",image:sunny_day,rangeStart:12,rangeEnd:16},{greet:"Good Evening",image:city_life,rangeStart:16,rangeEnd:20},{greet:"Good Night",image:moonlight,rangeStart:20,rangeEnd:24}];
  
 export   function Home( {page}){ 
    const user=useSelector(state=>state.user.value);
@@ -220,10 +220,10 @@ export   function Home( {page}){
       <QuickAccess page={page}/>
        <div className="container-fluid  ">
       
-             <div className="  row   position-relative border py-2" id="dayTime"> 
-             <img src={cool} alt="background" className="position-absolute backImg"></img>
+             <div className="  row   position-relative border py-2 align-items-center" id="dayTime"> 
+             {/* <img src={cool} alt="background" className="position-absolute backImg"></img> */}
               
-              <div className="col-lg-10 col-md-10">
+              <div className="col-lg-8 col-md-8">
               
                 <div className="headContainer p-2 rounded    border     d-flex align-items-center">
                          <h4 className="col-12 userGreetings" >{greetingTimes.filter(item=>date.getHours()>=item.rangeStart && date.getHours()<item.rangeEnd)[0].greet}</h4>
@@ -247,7 +247,7 @@ export   function Home( {page}){
 
               </div>
               </div>
-              <div className="col-lg-2 col-md-2 col-sm-4 col-xs-6  imgContainer"><img alt="dayImages" src={greetingTimes.filter(item=>date.getHours()>=item.rangeStart && date.getHours()<item.rangeEnd)[0].image} className="img-fluid"></img></div>
+              <div className="col-lg-4 col-md-5 col-sm-6 col-xs-6 col-6 mx-auto imgContainer" style={{zIndex:"2"}}><img alt="dayImages" src={greetingTimes.filter(item=>date.getHours()>=item.rangeStart && date.getHours()<item.rangeEnd)[0].image} className="img-fluid"></img></div>
               
               </div> 
              

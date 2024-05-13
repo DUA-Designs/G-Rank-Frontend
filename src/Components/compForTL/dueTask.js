@@ -6,6 +6,7 @@ import axios from "axios";
 import { tasksAPI } from "../../redux/dueTaskSlice";
 import { userAPI } from "../../redux/counterSlice";
 import { activeTasksAPI } from "../../redux/activeTasksSlice";
+import { task_re } from "../../media";
  
 
 export function DueTask( ){
@@ -127,16 +128,18 @@ let selectedDev;
     },[])
    
     return (
-        <div className="row ">
+        <div className="row position-relative">
         <Navbar   />
 
         <div className="col-10 mx-auto  border sectionContainer" >
+         
         < QuickAccess page={"DueTask"}/>
-        <div className="  ">
-             <div className="p-2">
-              <h3 className="text-center border rounded p-2 mb-2">Due Tasks</h3></div>
-         <div className=" p-2 activeTaskTable  col-lg-10 col-md-11">
-            <div className="border rounded">
+        <div className=" row "   >
+             <div className="p-2  backColor "  >
+              <h3 className="text-center border rounded p-2 mb-2 ">Due Tasks</h3></div>
+         <div className=" p-2 activeTaskTable  col-lg-10 col-md-11"  >
+         
+            <div className="border rounded backColor"   >
            <table className="col-12 text-center   deskTable"  >
                         <thead>
                            <th>Id</th>  
@@ -161,12 +164,15 @@ let selectedDev;
                 </div>
              
          </div>
-        
+         <div className="col-lg-2  tlSVg" >
+          <img src={task_re} alt="svg" className=" img-fluid"></img></div>
+       
                 
                  
         </div>
-      
+                 
         </div>
+           
         </div>
     )
 }
