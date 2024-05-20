@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import choose from './media/data-collection.png';
+import choose from './media/undraw_data_input_fxv2.svg';
 import axios from 'axios';
 import { change } from '../../redux/formSlice';
  
