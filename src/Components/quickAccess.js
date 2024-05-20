@@ -41,7 +41,7 @@ export function QuickAccess({page} ){
 //  await new Promise(resolve=>setTimeout(()=>{resolve("THis is for loading time")},2000));
 
 //  localStorage.setItem("sessionTime","true");
-//  window.location.href="/G-Rank-Frontend";
+ window.location.href="/G-Rank-Frontend";
    
  
   
