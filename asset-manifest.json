@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/G-Rank-Frontend/static/css/main.1cfd78aa.css",
-    "main.js": "/G-Rank-Frontend/static/js/main.a215db47.js",
+    "main.js": "/G-Rank-Frontend/static/js/main.20a964a8.js",
     "static/media/cool-background-cyan.png": "/G-Rank-Frontend/static/media/cool-background-cyan.371444d0b872f54f5a08.png",
     "static/media/4907157.jpg": "/G-Rank-Frontend/static/media/4907157.3261e91c47de7491b551.jpg",
     "static/media/message-incoming-132126.mp3": "/G-Rank-Frontend/static/media/message-incoming-132126.71ffe8d5a3a0e9bdc45d.mp3",
@@ -19,21 +19,21 @@
     "static/media/undraw_completed_tasks_vs6q.svg": "/G-Rank-Frontend/static/media/undraw_completed_tasks_vs6q.34f13160e5d4f8b84b1b743b42435de9.svg",
     "static/media/sunrise.png": "/G-Rank-Frontend/static/media/sunrise.1438502eac0278be7ec4.png",
     "static/media/undraw_sunny_day_re_gyxr.svg": "/G-Rank-Frontend/static/media/undraw_sunny_day_re_gyxr.b831e16f122ff520838870bda85f517b.svg",
-    "static/media/data-collection.png": "/G-Rank-Frontend/static/media/data-collection.63c11b9e9828af552803.png",
     "static/media/pie-chart.png": "/G-Rank-Frontend/static/media/pie-chart.68764b299e7da9dcc534.png",
     "static/media/undraw_add_tasks_re_s5yj.svg": "/G-Rank-Frontend/static/media/undraw_add_tasks_re_s5yj.5fed3681344134d83d03bfd4fd1426b5.svg",
     "static/media/undraw_usability_testing_re_uu1g.svg": "/G-Rank-Frontend/static/media/undraw_usability_testing_re_uu1g.1a0a982eae66881b33db5695d7584ec6.svg",
     "static/media/science.png": "/G-Rank-Frontend/static/media/science.43862d3c2af33e3f39d1.png",
+    "static/media/undraw_data_input_fxv2.svg": "/G-Rank-Frontend/static/media/undraw_data_input_fxv2.2bf78c7022bf2f50564c6bba41761511.svg",
     "static/media/undraw_accept_tasks_re_09mv.svg": "/G-Rank-Frontend/static/media/undraw_accept_tasks_re_09mv.7082abad945ab0b298ab421707c588ac.svg",
     "static/media/undraw_progress_tracking_re_ulfg.svg": "/G-Rank-Frontend/static/media/undraw_progress_tracking_re_ulfg.42395cd30f12a241001c11456a9b9acc.svg",
     "static/media/undraw_mornings_re_cofi.svg": "/G-Rank-Frontend/static/media/undraw_mornings_re_cofi.ab2158a4e29d4cc13849c4e1035dfe2d.svg",
     "static/media/undraw_task_re_wi3v.svg": "/G-Rank-Frontend/static/media/undraw_task_re_wi3v.85e2ff6237f2d4a569f4acfd1bc669f4.svg",
     "index.html": "/G-Rank-Frontend/index.html",
     "main.1cfd78aa.css.map": "/G-Rank-Frontend/static/css/main.1cfd78aa.css.map",
-    "main.a215db47.js.map": "/G-Rank-Frontend/static/js/main.a215db47.js.map"
+    "main.20a964a8.js.map": "/G-Rank-Frontend/static/js/main.20a964a8.js.map"
   },
   "entrypoints": [
     "static/css/main.1cfd78aa.css",
-    "static/js/main.a215db47.js"
+    "static/js/main.20a964a8.js"
   ]
 }
