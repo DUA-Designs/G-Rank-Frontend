@@ -66,7 +66,7 @@ let selectedStat;
 
       <div className="col-10 mx-auto   border sectionContainer" >
       < QuickAccess page={"Engage"}/>
-           <div className=" row" style={{overflow:"hidden"}}>
+           <div className="   marginSides" >
              <div className="p-2 backColor">
               <h3 className="text-center border rounded p-2 mb-2">Task List <div className="newTaskLoader"></div></h3></div>
          <div className=" p-2 activeTaskTable  col-lg-10 col-md-11">

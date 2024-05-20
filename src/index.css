@@ -410,7 +410,7 @@ background-image: linear-gradient(135deg, #8BC6EC 0%, #0174b1 100%); */
   top:-15%;
   background: white;
  z-index: -100;
-transform: scale(0);
+ 
  transition:all 0.4s linear;
  left: 0 ;
  right: 0;
@@ -418,26 +418,31 @@ transform: scale(0);
  bottom: 0;
  margin:  auto;
  padding: 0;
-  
+ transform: scale(0);
+   
  
 }
 .whiteScreen{
   position: fixed;
-  width: 100vw;
+  width: 0;
   height:100vh;
   background-color: rgba(255, 255, 255, 0.788);
- z-index: -100;
- transition: all 0.2s linear;
+ 
+ transition: all 0.4s linear;
+ z-index: 9999;
+ display: none;
  
 }
 .whiteScreen.active{
-  z-index: 1000000;
+ 
+ 
 }
 .swipeBox.active{
  
-  z-index: 1000000;
+ z-index: 9999;
   opacity: 1;
 transform: scale(1);
+ 
     
  
   

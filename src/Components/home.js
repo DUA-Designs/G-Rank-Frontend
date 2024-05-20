@@ -189,25 +189,28 @@ export   function Home( {page}){
       }
 
      async function showSwipes(){
+                 document.querySelector(".swipeBox").classList.add("active");
+        document.querySelector(".whiteScreen").classList.add("active");
  
-        document.querySelector(".swipeBox").classList.add("active");
+      
         await new Promise(resolve=>{
           setTimeout(()=>{
             resolve("this is for loading time");
           },400);
         });
-         document.querySelector(".whiteScreen").classList.add("active");
+ 
+        
         
       }
      async function closeSwipeBox(){
-       
+         document.querySelector(".swipeBox").classList.remove("active");
           document.querySelector(".whiteScreen").classList.remove("active");
           await   new Promise(resolve=>{
           setTimeout(()=>{
             resolve("this is for loading time");
           },400);
         });
-             document.querySelector(".swipeBox").classList.remove("active");
+            
       }
     
  
