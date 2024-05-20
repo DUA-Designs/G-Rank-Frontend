@@ -6,7 +6,7 @@ import axios from "axios";
 import { tasksAPI } from "../../redux/dueTaskSlice";
 import { userAPI } from "../../redux/counterSlice";
 import { activeTasksAPI } from "../../redux/activeTasksSlice";
-import { task_re } from "../../media";
+import { organizing_projects_re, task_re } from "../../media";
  
 
 export function DueTask( ){
@@ -165,7 +165,7 @@ let selectedDev;
              
          </div>
          <div className="col-lg-2  tlSVg" >
-          <img src={task_re} alt="svg" className=" img-fluid"></img></div>
+          <img src={organizing_projects_re} alt="svg" className=" img-fluid"></img></div>
        
                 
                  
