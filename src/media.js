@@ -30,8 +30,10 @@ import accept_tasks from './media/undraw_accept_tasks_re_09mv.svg';
 import completed_tasks from './media/undraw_completed_tasks_vs6q.svg';
 import add_tasks_re from './media/undraw_add_tasks_re_s5yj.svg';
 import organizing_projects_re from './media/undraw_organizing_projects_re_9p1k.svg';
+import authentication from './media/undraw_location_search_re_ttoj.svg';
+import selectOption from './media/undraw_selection_re_ycpo.svg';
 
 
 
 
-export {grank,partner,morning,review,air,profilePic,noon,evening,night,pie,taxable,poi,track,time,cool,nullNotifications,newTask,dots,loadingCircle,success,failure,progress_tracking,usability_testing,mornings_re_cofi,moonlight,sunny_day,city_life,task_re,accept_tasks,completed_tasks,add_tasks_re,organizing_projects_re};
+export {grank,partner,morning,review,air,profilePic,noon,evening,night,pie,taxable,poi,track,time,cool,nullNotifications,newTask,dots,loadingCircle,success,failure,progress_tracking,usability_testing,mornings_re_cofi,moonlight,sunny_day,city_life,task_re,accept_tasks,completed_tasks,add_tasks_re,organizing_projects_re,authentication,selectOption};

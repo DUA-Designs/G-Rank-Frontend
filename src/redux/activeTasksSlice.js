@@ -3,10 +3,10 @@ import axios from 'axios';
 
  export const activeTasksAPI=createAsyncThunk('activeTasks/activeTasksAPI',  async ( )=>{
  
-  
+  // http://localhost:8000/activeTasks
         
    try {
-     const res = await axios.get("https://g-rank-backend.onrender.com/activeTasks");
+     const res = await axios.get("http://localhost:8000/activeTasks");
     
      
      return res.data.tasks;

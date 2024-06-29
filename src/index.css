@@ -617,7 +617,7 @@ padding:2px 5px;
   
  }
  .activeTaskTable tbody{
-  font-size: 16px;
+  font-size: 12px;
   text-wrap:wrap;
    font-weight: 300;
 
@@ -900,4 +900,46 @@ bottom: 0;
   }
   
 }
+.activeTaskTable>div{
+  overflow-x: auto;
+}
+
+.tableBody td{
+  word-break: keep-all;
+      text-align: justify;
+      text-align: center;
+  
  
+
+}
+ul{
+  padding-left: 15px !important;
+}
+.p-tree{
+  padding-left: 0 !important;
+}
+a {
+  text-decoration: none;
+}
+
+.p-treeselect-label{
+  font-size: 10px;
+ 
+}
+.p-treeselect .p-treeselect-label{
+  padding: 0.25rem 0.5rem;
+}
+.card{
+  overflow: hidden;
+  overflow-x: auto;
+  
+}
+.p-dropdown-items{
+  padding-left: 0 !important;
+}
+.p-dropdown-panel.p-component.p-connected-overlay-enter-done{
+ 
+}
+.p-dropdown-panel .p-dropdown-header {
+  padding: 5px !important;
+}

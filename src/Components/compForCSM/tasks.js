@@ -3,12 +3,12 @@ import { Navbar } from "../navbar";
 import { QuickAccess } from "../quickAccess";
 import { useEffect  } from "react";
  
-import { tasksAPI } from "../../redux/dueTaskSlice";
+import { tasksAPI } from "../../redux/tasks";
 import { accept_tasks, task_re } from "../../media";
  
 
-export function DueTask( ){
-    const dueTasks=useSelector((state)=>state.tasks.value);
+export function Tasks( ){
+    const Tasks=useSelector((state)=>state.tasks.value);
    
     const dispatch=useDispatch();
 
@@ -48,26 +48,32 @@ export function DueTask( ){
         < QuickAccess page={"DueTask"}/>
         <div className="marginTop ">
              <div className="p-2 backColor">
-              <h3 className="text-center border rounded p-2 mb-2">Due Tasks</h3></div>
+              <h3 className="text-center border rounded p-2 mb-2">  Task List</h3></div>
          <div className=" p-2 activeTaskTable ">
             <div className="border rounded backColor">
                 <table className="col-12 text-center  "  >
                         <thead>
                         <th>Id</th>
-                                    <th>Task</th>                                           
-                        <th>Description</th>
+                                    <th>Project</th>                                           
                         <th>Department</th>
+                          <th>Priority</th>
+                        <th>Description</th>
+                       
                         <th>Deadline</th>
                       
                          <th>Status</th>
+
+ <th>Edit</th>
                         </thead>
                         <tbody className="tableBody">
-                          {dueTasks?dueTasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).map(key=><td className="col-2">{item[key]}</td>)}</tr> ):""}
+                          {Tasks?Tasks.map((item,index)=><tr className="my-2"  >{Object.keys(item).map(key=><td className=" ">{item[key]}</td>)}<td className="  "><i class="fi fi-tr-pen-square "></i></td></tr> ):""}
 
                         </tbody>
                  
                 </table>
+                
                 </div>
+
              
          </div>
          <div className="col-lg-2  tlSVg" >

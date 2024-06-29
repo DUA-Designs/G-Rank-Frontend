@@ -10,9 +10,10 @@ import { Settings } from "../settings"
 import {Team} from './team';
 
  import {NewTask }from './newTask.js';
-import { Todo } from "../todo.js"
+ 
 import { Reports } from "./reports.js"
 import { DueTask } from "./dueTask.js"
+import { Todo } from "./todo.js"
 
  
  

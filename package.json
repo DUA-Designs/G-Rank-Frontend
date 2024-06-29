@@ -5,10 +5,13 @@
   "private": true,
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.3",
+    "@mobiscroll/react-lite": "^4.10.9",
     "@reduxjs/toolkit": "^2.2.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "chart.js": "^4.4.3",
+    "primeicons": "^7.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-calendar": "^4.8.0",
@@ -21,8 +24,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-   "predeploy":"npm run build",
-   "deploy":"gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -45,11 +48,14 @@
     ]
   },
   "devDependencies": {
+    "@coreui/coreui": "^5.0.2",
+    "@coreui/react": "^5.1.0",
     "@fullcalendar/core": "^6.1.11",
     "@fullcalendar/daygrid": "^6.1.11",
     "@fullcalendar/react": "^6.1.11",
     "axios": "^1.6.8",
     "gh-pages": "^6.1.1",
+    "primereact": "^10.6.6",
     "react-big-calendar": "^1.11.2",
     "react-calendar-timeline": "^0.28.0",
     "react-native-calendars": "^1.1304.1",

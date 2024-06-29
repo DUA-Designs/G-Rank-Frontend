@@ -7,6 +7,7 @@ import { QuickAccess } from "./quickAccess";
 import { useSelector,useDispatch } from "react-redux";
 import   axios  from "axios";
 import { userAPI } from "../redux/counterSlice";
+import { signInChecker } from "../redux/signInSlice";
  
 
  
@@ -149,7 +150,14 @@ export   function Home( {page}){
                 
                 if(checkSwipeIn && checkSwipeOut){
                           setDisableSignIn(true);
+
+                             
                 }
+            
+                
+
+       
+                   
                    
            
       }
@@ -163,12 +171,12 @@ export   function Home( {page}){
                        
                       
                            const response =await axios.get(`https://g-rank-backend.onrender.com/attendance?EmployeeID=${user.EmployeeID}&swipedDate=${swipedDate}&swipe=${swipe}`);
-                           console.log(response.data.exec );
+                          //  console.log(response.data.exec );
                           if(response.data.exec){
                             
                             if(event==="Sign In"){
                               setSwipeIn( swipe);
-                             
+                       
                             }
                             else{
                                setSwipeOut( swipe);
@@ -183,6 +191,8 @@ export   function Home( {page}){
        
         
        dispatch(userAPI({employeeID:user.EmployeeID}));
+
+       dispatch(signInChecker(true));
 
      
 

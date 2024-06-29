@@ -13,9 +13,29 @@ import { userPages } from "./Components/interfaces";
 import { WDRoutes } from "./Components/compForWD/WDInterface";
 import axios from "axios";
 import { userLogin } from "./redux/sessionHandler";
+
+
+import { PrimeReactProvider, PrimeReactContext,Ripple,} from 'primereact/api';
  
+import { Button } from 'primereact/button';
+        
+
+
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+
+import 'primeicons/primeicons.css';
+
+  const primeOptions = {
+        ripple: true,
+         
+    };
  
+        
+
+        
+//  import { CAlert } from '@coreui/react';
  
+//  import '@coreui/coreui/dist/css/coreui.min.css';
  
  
  
@@ -289,7 +309,7 @@ if(session==="Logout"){
       
        
        <BrowserRouter basename={"G-Rank-Frontend"}>
-              {userPages[user["Designation"]]?userPages[user["Designation"]]:<WDRoutes/>}
+          <PrimeReactProvider value={primeOptions}>    {userPages[user["Designation"]]?userPages[user["Designation"]]:<WDRoutes/>}</PrimeReactProvider>
  
    
       </BrowserRouter>

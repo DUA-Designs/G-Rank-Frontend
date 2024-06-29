@@ -7,13 +7,14 @@ import { Appraisals } from "./appraisals";
 import {   CalendarComp } from "./calendar";
 import { Attendance } from "./attendance";
 import { Assessments } from "./assessments";
-import { DueTask } from "./dueTask";
+import { Tasks } from "./tasks";
+ 
 
 
 export const CSMRoutes=()=>{
     return (<Routes>
          
-        <Route path="/dueTask" element={ <DueTask  page={"dueTask"}/>}></Route>
+        <Route path="/Tasks" element={ <Tasks  page={"dueTask"}/>}></Route>
  
         <Route path="/calendar" element={ <CalendarComp  page={"calendar"}/>}></Route>
    
