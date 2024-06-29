@@ -25,7 +25,7 @@ async function handleTaskSubmit(event){
             const  startedTime = `${date.getHours()} : ${date.getMinutes()>9?date.getMinutes():"0"+date.getMinutes() } : ${date.getSeconds()>9?date.getSeconds():"0"+date.getSeconds()}`;
          
           
-         let response=await axios.get(`http://localhost:8000/addTask?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}&id=${taskid}&Priority=${Priority}&startedDate=${startedDate}&startedTime=${startedTime}`);
+         let response=await axios.get(`https://g-rank-backend.onrender.com/addTask?Task=${Task}&Description=${Description}&Department=${Department}&Deadline=${Deadline}&id=${taskid}&Priority=${Priority}&startedDate=${startedDate}&startedTime=${startedTime}`);
          document.querySelector(".error").innerHTML=response.data.text;
 
               setTimeout(()=>{
