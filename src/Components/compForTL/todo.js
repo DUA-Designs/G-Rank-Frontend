@@ -91,7 +91,7 @@ if(finished.length>=1){
  const endDate=`${date.getFullYear()}-${date.getMonth()>9?date.getMonth()+1:"0"+(date.getMonth()+1)}-${date.getDate()}`;
             const  endTime = `${date.getHours()} : ${date.getMinutes()>9?date.getMinutes():"0"+date.getMinutes() } : ${date.getSeconds()>9?date.getSeconds():"0"+date.getSeconds()}`;
         document.querySelector(".newTaskLoader").classList.add("active");
-          const response =await axios.get(`http://localhost:8000/deleteActiveTask?id=${activeTasks[ind].id}&EmployeeID=${user.EmployeeID}&Dev=${activeTasks[ind].Dev}&Notification=${user.Notification}&endDate=${endDate}&endTime=${endTime}`);
+          const response =await axios.get(`https://g-rank-backend.onrender.com/deleteActiveTask?id=${activeTasks[ind].id}&EmployeeID=${user.EmployeeID}&Dev=${activeTasks[ind].Dev}&Notification=${user.Notification}&endDate=${endDate}&endTime=${endTime}`);
           console.log(response.data.text);
 
 
