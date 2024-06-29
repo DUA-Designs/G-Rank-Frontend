@@ -6,7 +6,7 @@ import axios from 'axios';
   // http://localhost:8000/activeTasks
         
    try {
-     const res = await axios.get("http://localhost:8000/activeTasks");
+     const res = await axios.get("https://g-rank-backend.onrender.com/activeTasks");
     
      
      return res.data.tasks;
