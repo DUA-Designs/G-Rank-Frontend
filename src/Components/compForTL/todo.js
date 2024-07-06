@@ -144,18 +144,7 @@ if(finished.length>=1){
              
          </div>
 
-            <div className="p-2 backColor mt-5">
-              <h3 className="text-center border rounded p-2 mb-2 "> Completed Tasks<div className="newTaskLoader"></div></h3>  </div>
-              <div className="p-2">
-                  <div className="card  ">
-                    <DataTable value={completed} tableStyle={{ minWidth: '50rem' }}>
-                        <Column field="task" header="Project"></Column>
-                        <Column field="swipedDate" header="Date Added"></Column>
-                        <Column field="Progress" header="Status"></Column>
-                        <Column field="time" header="Time Taken"></Column>
-                    </DataTable>
-                 </div>
-              </div>
+            
        
    
            <div className="col-lg-2  tlSVg" >
