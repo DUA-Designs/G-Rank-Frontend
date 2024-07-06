@@ -11,7 +11,8 @@ export const TeamLead =()=>{
     return (
         <ul className="nav-links">
           <li><Link className="myLinks" to={"/"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
-            <li><Link className="myLinks" to={"/newTask"}><span><i class="fi fi-ts-overview"></i></span><span> newTask</span></Link></li>
+           <li><Link className="myLinks" to={"/requestForm"}><span>   <i className="pi pi-file-plus"></i></span><span>Create Task</span></Link></li>
+            <li><Link className="myLinks" to={"/newTask"}><span><i class="fi fi-ts-overview"></i></span><span> Assign</span></Link></li>
  
             <li><Link className="myLinks" to={"/todo"}><span><i className="fi fi-tr-to-do"></i></span><span> To Do</span></Link></li>
                         <li><Link className="myLinks" to={"/dueTask"}><span><i class="fi fi-ts-priority-importance"></i></span><span>Due Task</span></Link></li>

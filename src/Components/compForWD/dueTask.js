@@ -21,7 +21,7 @@ let selectedStat;
 
     if(type==="desktop"){
           data=document.querySelectorAll(`.tableBody tr:nth-child(${ind+1}) td`);
-           selectedStat=data[5].childNodes[0].value;
+           selectedStat=data[8].childNodes[0].value;
             
          
   

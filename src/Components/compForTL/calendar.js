@@ -28,6 +28,7 @@ export function CalendarComp( ){
      const [selectedMonth, setSelectedMonth] = useState(null);
      const [selectedMonthForEmployee, setSelectedMonthForEmployee] = useState(null);
      const [selectedMonthForSelf,setSelectedMonthForSelf]=useState(null);
+     const [months,setMonths]=useState([]);
       
      const [employees,setEmployees]=useState([]);
      const dispatch=useDispatch();
@@ -35,13 +36,13 @@ export function CalendarComp( ){
      const [selfNodes, setSelfNodes] = useState([]);
           const [employeeNodes, setEmployeeNodes] = useState([]);
  
-    const months = [
+    const monthsData = [
         { name: 'Jan', code: '1' },
         { name: 'Feb', code: '2' },
         { name: 'Mar', code: '3' },
         { name: 'Apr', code: '4' },
         { name: 'May', code: '5' },
-          { name: 'June', code: '6' }
+          { name: 'Jun', code: '6' }, { name: 'Jul', code: '7' }, { name: 'Aug', code: '8' }, { name: 'Sep', code: '9' }, { name: 'Oct', code: '10' }, { name: 'Nov', code: '11' }, { name: 'Dec', code: '12' }
     ];
      const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
@@ -183,9 +184,9 @@ for ( let i=0;i<tasksInMonth.length;i++){
                const tasksInMonth=Tasks.filter(item=>Number(item["startedDate"].split("-")[1])===Number(e.value.code));
             //    console.log(e.value.code,tasksInMonth);
                const total=tasksInMonth ;
-               const wip=tasksInMonth.filter(item=> (item.Progress==="Active" || item.Progress==="Assigned" ) && new Date().getTime()<= new Date(item.Deadline).getTime()) 
+               const wip=tasksInMonth.filter(item=>  item.Progress!=="Completed" && new Date().getTime()<= new Date(item.Deadline).getTime()) 
                const done=tasksInMonth.filter(item=> item.Progress==="Completed") 
-               const pending =tasksInMonth.filter(item=>  (item.Progress==="Active" || item.Progress==="Assigned" )  && new Date().getTime()> new Date(item.Deadline).getTime()) 
+               const pending =tasksInMonth.filter(item=>   item.Progress!=="Completed"  && new Date().getTime()> new Date(item.Deadline).getTime()) 
     
              
             //   console.log(total,wip,done,pending);
@@ -236,13 +237,18 @@ for ( let i=0;i<tasksInMonth.length;i++){
 useEffect(  ()=>{
       dispatch(tasksAPI());
    getEmployees();
+   const date=new Date();
+   let currentMonth=monthsData.filter(item=>Number(item.code)===(date.getMonth()+1))[0];
+ 
 
-       handleAnalysis({value: { name: 'June', code: '6' }});
+       handleAnalysis({value:  currentMonth});
 
  
 
-     handleSelfAnalysis({value: { name: 'June', code: '6' }})
-     handleEmployeeAnalysis({value: { name: 'June', code: '6' }},"fromMonth");
+     handleSelfAnalysis({value: currentMonth})
+     handleEmployeeAnalysis({value: currentMonth},"fromMonth");
+
+     setMonths(monthsData.filter(item=>Number(item.code)<=(date.getMonth()+1)));
  
 },[ ]);
 

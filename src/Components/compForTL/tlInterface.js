@@ -14,6 +14,7 @@ import {Team} from './team';
 import { Reports } from "./reports.js"
 import { DueTask } from "./dueTask.js"
 import { Todo } from "./todo.js"
+import { RequestForm } from "../compForCSM/requestform.js"
 
  
  
@@ -33,6 +34,7 @@ export const TLRoutes=()=>{
          <Route path="/" element={ <Home   />} ></Route>
         <Route path="/myProfile" element={ <Profile  page={"info"}/>}></Route>
          <Route path="/team" element={ <Team  page={"team"}/>}></Route>
+          <Route path="/requestForm" element={ <RequestForm  page={"form"}/>}></Route>
         
    
         <Route path="/settings" element={ <Settings  page={"settings"}/>}></Route>
