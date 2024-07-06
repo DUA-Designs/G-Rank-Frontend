@@ -5,14 +5,90 @@ import { WDRoutes } from "./compForWD/WDInterface";
 import { AdminRoutes } from "./compForAdmin/AdminInterface";
 import { TLRoutes } from "./compForTL/tlInterface";
 
+import { TieredMenu } from 'primereact/tieredmenu';
 
+ 
+ 
 
 export const TeamLead =()=>{
-    return (
+     
+    const items = [
+        {
+            label: 'File',
+            icon: 'pi pi-file',
+            items: [
+                {
+                    label: 'New',
+                    icon: 'pi pi-plus',
+                    items: [
+                        {
+                            label: 'Document',
+                            icon: 'pi pi-file'
+                        },
+                        {
+                            label: 'Image',
+                            icon: 'pi pi-image'
+                        },
+                        {
+                            label: 'Video',
+                            icon: 'pi pi-video'
+                        }
+                    ]
+                },
+                {
+                    label: 'Open',
+                    icon: 'pi pi-folder-open'
+                },
+                {
+                    label: 'Print',
+                    icon: 'pi pi-print'
+                }
+            ]
+        },
+        {
+            label: 'Edit',
+            icon: 'pi pi-file-edit',
+            items: [
+                {
+                    label: 'Copy',
+                    icon: 'pi pi-copy'
+                },
+                {
+                    label: 'Delete',
+                    icon: 'pi pi-times'
+                }
+            ]
+        },
+        {
+            label: 'Search',
+            icon: 'pi pi-search'
+        },
+        {
+            separator: true
+        },
+        {
+            label: 'Share',
+            icon: 'pi pi-share-alt',
+            items: [
+                {
+                    label: 'Slack',
+                    icon: 'pi pi-slack'
+                },
+                {
+                    label: 'Whatsapp',
+                    icon: 'pi pi-whatsapp'
+                }
+            ]
+        }
+    ];
+
+    return (<div>
         <ul className="nav-links">
+
+
           <li><Link className="myLinks" to={"/"}><span><i className="fi fi-tr-house-chimney"></i></span><span> Home</span></Link></li>
            <li><Link className="myLinks" to={"/requestForm"}><span>   <i className="pi pi-file-plus"></i></span><span>Create Task</span></Link></li>
-            <li><Link className="myLinks" to={"/newTask"}><span><i class="fi fi-ts-overview"></i></span><span> Assign</span></Link></li>
+            <li><Link className="myLinks" to={"/newTask"}><span><i class="fi fi-ts-overview"></i></span><span> Manage Tasks</span></Link></li>
  
             <li><Link className="myLinks" to={"/todo"}><span><i className="fi fi-tr-to-do"></i></span><span> To Do</span></Link></li>
                         <li><Link className="myLinks" to={"/dueTask"}><span><i class="fi fi-ts-priority-importance"></i></span><span>Due Task</span></Link></li>
@@ -23,6 +99,8 @@ export const TeamLead =()=>{
             <li><Link className="myLinks" to={"/reports"}><span><i class="fi fi-ts-newspaper"></i></span><span> Reports</span></Link></li>
             <li><Link className="myLinks" to={"/appraisals"}><span> <i class="fi fi-ts-chart-user"></i></span><span>Appraisals</span></Link></li>
         </ul>
+         {/* <TieredMenu model={items} breakpoint="767px" /> */}
+        </div>
     )
 }
 export const WebDev=()=>{

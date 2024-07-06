@@ -13,6 +13,9 @@ import { NodeService ,NodeService2} from "./multi-level-heirarchy-select";
 import { TreeSelect } from "primereact/treeselect";
 import { MultiSelect } from "primereact/multiselect";
 import { Button } from "primereact/button";
+import { TabPanel, TabView } from "primereact/tabview";
+import { TreeTable } from "primereact/treetable";
+import { Column } from "primereact/column";
  
  
  
@@ -27,6 +30,7 @@ export function NewTask( ){
     const activeTasks=useSelector(state=>state.activeTasks.value);
     const user=useSelector(state=>state.user.value);
     const [loader,setLoader]=useState([]);
+    const [finished,setFinished]=useState([]);
   
    
     const dispatch=useDispatch();
@@ -169,6 +173,49 @@ let TaskId;
       setSelectedNodeKeys([...arr]);
       
     }
+
+
+
+        function showCompleted(e){
+    
+
+
+ const completedTasks=Tasks.filter(item=> item.Progress==="Completed");
+ 
+
+        let baseObject={
+                        key: '0',
+                        data: {
+                                name: 'Applications',
+                                size: '100kb',
+                                type: 'Folder'
+                            }
+                };
+                let filledObject= [];
+                       
+for ( let i=0;i<completedTasks.length;i++){
+
+            filledObject.push({key:i,data:{name:completedTasks[i].Task,startedDate:completedTasks[i].startedDate,Progress:completedTasks[i].Progress}})
+
+}
+
+    const selfData = {
+      
+
+        getTreeTableNodesData() {
+            return  filledObject;
+        },
+
+        getTreeTableNodes() {
+            return Promise.resolve(this.getTreeTableNodesData());
+        },
+
+         
+    };
+    selfData.getTreeTableNodes().then((data) => setFinished(data));
+
+
+  }
     useEffect(()=>{
      dispatch(tasksAPI());
      dispatch(activeTasksAPI());
@@ -179,6 +226,8 @@ let TaskId;
         
      }
       setLoader([...arr]);
+
+      showCompleted();
 
         
     //    getTasks();
@@ -213,9 +262,12 @@ console.log(activeTasks);
         <div className="   "   >
              <div className="p-2  backColor "  >
               <h3 className="text-center border rounded p-2 mb-2 ">Task List</h3></div>
+           
          <div className=" p-2 activeTaskTable   "  >
-         
-            <div className="border rounded backColor"   >
+             <div className="card">
+            <TabView>
+                <TabPanel header="Active">
+                      <div className="border rounded backColor"   >
            <table className="col-12 text-center   deskTable"  >
                         <thead>
                            <th>Id</th>  
@@ -226,7 +278,7 @@ console.log(activeTasks);
                            <th>Deadline</th>
                              <th>Start Date  </th>
                                <th>Start Time</th>
-                           <th>Tasks Checklist</th>
+                           <th>Tasks List</th>
                         <th>Assign</th>
                          <th>Add</th>
                        
@@ -249,6 +301,19 @@ console.log(activeTasks);
 
 
                 </div>
+                </TabPanel>
+                <TabPanel header="Completed">
+                      <TreeTable value={finished} tableStyle={{ minWidth: '50rem' }}>
+                                        <Column field="name" header="Project" expander></Column>
+                                        <Column field="startedDate" header="Date"></Column>
+                                        <Column field="Progress" header="Status"></Column>
+                        </TreeTable>
+                </TabPanel>
+               
+            </TabView>
+        </div>
+         
+           
              
          </div>
          <div className="col-lg-2  tlSVg" >
