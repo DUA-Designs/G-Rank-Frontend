@@ -606,6 +606,9 @@ padding:2px 5px;
     font-weight: 600;
 
  }
+  .activeTaskTable *{
+    text-align: center;
+  }
   
  .activeTaskTable thead{
   font-size: 15px;
@@ -943,3 +946,6 @@ a {
 .p-dropdown-panel .p-dropdown-header {
   padding: 5px !important;
 }
+
+
+ 
