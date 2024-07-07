@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/G-Rank-Frontend/static/css/main.f78c42e8.css",
-    "main.js": "/G-Rank-Frontend/static/js/main.e827b425.js",
+    "main.css": "/G-Rank-Frontend/static/css/main.de9b875e.css",
+    "main.js": "/G-Rank-Frontend/static/js/main.8511f695.js",
     "static/js/867.0cac7897.chunk.js": "/G-Rank-Frontend/static/js/867.0cac7897.chunk.js",
     "static/media/cool-background-cyan.png": "/G-Rank-Frontend/static/media/cool-background-cyan.371444d0b872f54f5a08.png",
     "static/media/primeicons.svg": "/G-Rank-Frontend/static/media/primeicons.6ed59f962963a4a73af2.svg",
@@ -40,12 +40,12 @@
     "static/media/undraw_mornings_re_cofi.svg": "/G-Rank-Frontend/static/media/undraw_mornings_re_cofi.ab2158a4e29d4cc13849c4e1035dfe2d.svg",
     "static/media/undraw_task_re_wi3v.svg": "/G-Rank-Frontend/static/media/undraw_task_re_wi3v.85e2ff6237f2d4a569f4acfd1bc669f4.svg",
     "index.html": "/G-Rank-Frontend/index.html",
-    "main.f78c42e8.css.map": "/G-Rank-Frontend/static/css/main.f78c42e8.css.map",
-    "main.e827b425.js.map": "/G-Rank-Frontend/static/js/main.e827b425.js.map",
+    "main.de9b875e.css.map": "/G-Rank-Frontend/static/css/main.de9b875e.css.map",
+    "main.8511f695.js.map": "/G-Rank-Frontend/static/js/main.8511f695.js.map",
     "867.0cac7897.chunk.js.map": "/G-Rank-Frontend/static/js/867.0cac7897.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f78c42e8.css",
-    "static/js/main.e827b425.js"
+    "static/css/main.de9b875e.css",
+    "static/js/main.8511f695.js"
   ]
 }
