@@ -73,7 +73,7 @@ let selectedStat;
             <div className="border rounded backColor">
                 <table className="col-12 text-center  deskTable"  >
                         <thead>
-                                    <th>Task</th>                                           
+                        <th>Task</th>                                           
                         <th>Description</th>
                         <th>Department</th>
                         <th>Deadline</th>

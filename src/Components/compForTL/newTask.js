@@ -41,14 +41,74 @@ export function NewTask( ){
        const toast = useRef(null);
        const op = useRef(null);
         const [visible, setVisible] = useState(false);
+
+        const [reassign,setReassign]=useState(null);
+        const [loading,setLoading]=useState(false);
  
 
     const accept = () => {
-        toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
+     
+        if(reassign){
+
+
+
+           toast.current.show({ severity: 'info', summary: 'Confirmed',   life: 3000,   content: (props) => (
+        <div className="flex flex-column align-items-left" style={{ flex: '1' }}>
+            <div className="d-flex align-items-center gap-2">
+                <i className="pi pi-check"></i>
+                 <div className="font-medium text-lg   text-900">{props.message.summary}</div>
+            </div>
+            
+            {/* <Button className="p-button-sm flex" label="Reply" severity="success" onClick={clear}></Button> */}
+        </div>
+    ) });
+ 
+        }
+        else{
+
+
+           
+           toast.current.show({severity:'error', summary: 'Error', detail:'Message Content', life: 3000,   content: (props) => (
+        <div className="flex flex-column align-items-left" style={{ flex: '1' }}>
+            <div className="d-flex align-items-center gap-2">
+                <i className="pi pi-times"></i>
+                 <div className="font-medium text-lg   text-900">{props.message.summary}</div>
+            </div>
+            
+            {/* <Button className="p-button-sm flex" label="Reply" severity="success" onClick={clear}></Button> */}
+        </div>
+    ) });
+
+    
+        }
+
+    //      let loadingInitializer=[];
+    // for(let l=0;l<loading.length;l++){
+    //   loadingInitializer.push(false);
+    // }
+    // setLoading([...loadingInitializer]);
+    //   console.log(loading);
+        
     }
 
     const reject = () => {
-        toast.current.show({ severity: 'warn', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+        toast.current.show({ severity: 'warn', summary: 'Rejected',    life: 3000 , content: (props) => (
+        <div className="flex flex-column align-items-left" style={{ flex: '1' }}>
+            <div className="d-flex align-items-center gap-2">
+                <i className="pi pi-exclamation-triangle"></i>
+                 <div className="font-medium text-lg   text-900">{props.message.summary}</div>
+            </div>
+            
+            {/* <Button className="p-button-sm flex" label="Reply" severity="success" onClick={clear}></Button> */}
+        </div>
+    )});
+
+    //  let loadingInitializer=[];
+    // for(let l=0;l<loading.length;l++){
+    //   loadingInitializer.push(false);
+    // }
+    
+    // setLoading([...loadingInitializer]);
     }
     // const items = [
     //     {
@@ -225,9 +285,15 @@ let TaskId;
       
     }
 
-function selectedReAssign(index){
+function selectedReAssign(taskId,index){
+    // let loadingInitializer=loading;
+    // loadingInitializer[index]=!loading[index];
+    // setLoading([...loadingInitializer]);
+  setReassign(taskId);
     setVisible(true);
-    console.log(index,toast.current);
+   
+    
+    
 
 }
 
@@ -255,10 +321,17 @@ function selectedReAssign(index){
                             }
                 };
                 let filledObject= [];
-                       
+                       let loadingInitializer=[];
+                       for(let i=0;i<completedTasks.length;i++){
+                             loadingInitializer.push(false);
+                       }
+                       setLoading([...loadingInitializer])
+                       console.log(loading);
 for ( let i=0;i<completedTasks.length;i++){
+  
+  let time=(new Date(completedTasks[i].endDate).getTime()-new Date(completedTasks[i].startedDate).getTime())/1000;
 
-            filledObject.push({key:i,data:{name:completedTasks[i].Task,startedDate:completedTasks[i].startedDate,Progress:completedTasks[i].Progress,
+            filledObject.push({key:i,data:{name:completedTasks[i].Task,startedDate:completedTasks[i].startedDate,endDate:completedTasks[i].endDate,Progress:completedTasks[i].Progress,timeTaken:`${time/( 3600*24)} days`,
             
             splitButton:
             // <i class="pi pi-ellipsis-v" id={`edit${completedTasks[i].id}`} onClick={() => setVisible(true)}></i>
@@ -274,9 +347,10 @@ for ( let i=0;i<completedTasks.length;i++){
         //         </TabView>
         //     </OverlayPanel>
         // </div>
-                <Button label="Re-Assign" icon="pi pi-undo" onClick={( ) => selectedReAssign(i)}></Button>
+                <Button label="Re-Assign" icon="pi pi-undo" onClick={( ) => selectedReAssign(completedTasks[i].id,i)}  ></Button>
             
             }})
+            
 
 }
  
@@ -427,8 +501,9 @@ for(let i=0;i<data.length;i++){
                 <TabPanel header="Completed">
                      {finished.length>=1?<TreeTable value={finished} tableStyle={{ minWidth: '50rem' }}>
                                         <Column field="name" header="Project" expander></Column>
-                                        <Column field="startedDate" header="Date"></Column>
-                                        <Column field="Progress" header="Status"></Column>
+                                        <Column field="startedDate" header="Start"></Column>
+                                        <Column field="endDate" header="End"></Column>
+                                        <Column field="timeTaken" header="Time"></Column>
                                         <Column field="splitButton" header="Edit"  ></Column>
                         </TreeTable>:   <div className="card">
             <DataTable value={fakeItems[1]} className="p-datatable-striped">

@@ -9,7 +9,7 @@ import { signInChecker } from '../redux/signInSlice';
 
 
                           
- 
+ import 'primeicons/primeicons.css';
 
 
 export function Navbar(){

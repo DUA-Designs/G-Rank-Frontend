@@ -905,6 +905,7 @@ bottom: 0;
 }
 .activeTaskTable>div{
   overflow-x: auto;
+ 
 }
 
 .tableBody td{
