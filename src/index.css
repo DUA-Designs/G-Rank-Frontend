@@ -926,10 +926,10 @@ a {
   text-decoration: none;
 }
 
-.p-treeselect-label{
+/* .p-treeselect-label{
   font-size: 10px;
  
-}
+} */
 .p-treeselect .p-treeselect-label{
   padding: 0.25rem 0.5rem;
 }
@@ -947,6 +947,10 @@ a {
 .p-dropdown-panel .p-dropdown-header {
   padding: 5px !important;
 }
+.card{
+  z-index: 4;
+}
+
 
 
  

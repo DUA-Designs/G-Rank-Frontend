@@ -4,6 +4,7 @@ import { QuickAccess } from "../quickAccess";
 import './csm.css';
 import axios from "axios";
 import { add_tasks_re } from "../../media";
+import { useEffect } from "react";
 
 export function RequestForm( ){
  
@@ -34,6 +35,14 @@ async function handleTaskSubmit(event){
 
               
 }
+
+useEffect(()=>{
+   var today = new Date().toISOString().split('T')[0];
+        // Set the min attribute to today's date
+    
+
+  document.getElementById("Deadline").setAttribute("min", today);
+},[])
     return (
     <div className="row ">
         <Navbar  />
@@ -88,7 +97,7 @@ async function handleTaskSubmit(event){
                                
                                 </div>
                                   
-                                 <div className="mb-3 col-lg-6 col-md-6">
+                                 <div className="mb-3  ">
                                   <label for="Description" className="form-label">Description</label>
                                    <textarea id="Description" required rows={4} className="form-control"></textarea>
                                

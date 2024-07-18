@@ -311,7 +311,6 @@ if(session==="Logout"){
        <BrowserRouter basename={"G-Rank-Frontend"}>
           <PrimeReactProvider value={primeOptions}>    {userPages[user["Designation"]]?userPages[user["Designation"]]:<WDRoutes/>}</PrimeReactProvider>
  
-   
       </BrowserRouter>
          
   

@@ -22,12 +22,16 @@ import { Toast } from "primereact/toast";
 import { SplitButton } from "primereact/splitbutton";
 import { OverlayPanel } from "primereact/overlaypanel";
 import { ConfirmDialog } from "primereact/confirmdialog";
+import { Card } from "primereact/card";
+import { Fieldset } from "primereact/fieldset";
+import { Panel } from "primereact/panel";
+import { Tag } from "primereact/tag";
  
  
  
  
 
-export function NewTask( ){
+export function NewTask({page} ){
       const [nodes, setNodes] = useState(null);
     const [selectedNodeKeys, setSelectedNodeKeys] = useState([]);
         const [nodes2, setNodes2] = useState(null);
@@ -37,6 +41,7 @@ export function NewTask( ){
     const user=useSelector(state=>state.user.value);
     const [loader,setLoader]=useState([]);
     const [finished,setFinished]=useState([]);
+    const [TaskUI2,setTaskUI2]=useState([]);
     const fakeItems = [Array.from({ length: 11 }, (v, i) => i),Array.from({ length: 3 }, (v, i) => i)];
        const toast = useRef(null);
        const op = useRef(null);
@@ -236,7 +241,7 @@ let TaskId;
 //  http://localhost:8000/addToActiveTasks
         const res=await axios.get(`https://g-rank-backend.onrender.com/addToActiveTasks?Task=${Task}&Department=${Department}&Priority=${Priority}&Description=${Description}&Deadline=${Deadline}&selectedTask=${selectedTask}&Dev=${selectedDev.label}&id=${TaskId}`);
        
-            console.log(res.data);
+        
              dispatch(userAPI({employeeID:user.EmployeeID}));
                 let arr2=loader;
     arr2[ind]=false;
@@ -247,7 +252,7 @@ let TaskId;
       setLoader([...arr2]);
                
    await  dispatch(activeTasksAPI());
-   console.log(activeTasks);
+ 
     }
 
     
@@ -271,19 +276,25 @@ let TaskId;
     // }
     //     setActiveTasks( data);
     // }
-
+ 
     function isolateDeveloper(e,ind){
       
        let arr=selectedNodeKeys2;
        arr[ind]=e.value;
        setSelectedNodeKeys2([...arr]);
+     
     }
     function isolateTasks(e,ind){
   let arr=selectedNodeKeys;
        arr[ind]=e.value;
       setSelectedNodeKeys([...arr]);
+    
+
+
+      
       
     }
+    
 
 function selectedReAssign(taskId,index){
     // let loadingInitializer=loading;
@@ -301,37 +312,37 @@ function selectedReAssign(taskId,index){
     async     function showCompleted(availTasks){
 
   const res = await axios.get(`https://g-rank-backend.onrender.com/getTasks`);
-     
-   ;
     
 
            
-    
-
-
- const completedTasks=res.data.tasks.filter(item=> item.Progress==="Completed");
+   
  
 
-        let baseObject={
-                        key: '0',
-                        data: {
-                                name: 'Applications',
-                                size: '100kb',
-                                type: 'Folder'
-                            }
-                };
+ const completedTasks=res.data.tasks.filter(item=> item.Progress==="Completed");
+//   const unCompletedTasks=res.data.tasks.filter(item=> !item.Progress==="Completed" && !item.endDate);
+ 
+
+        // let baseObject={
+        //                 key: '0',
+        //                 data: {
+        //                         name: 'Applications',
+        //                         size: '100kb',
+        //                         type: 'Folder'
+        //                     }
+        //         };
                 let filledObject= [];
+                let filledObject2=[];
                        let loadingInitializer=[];
                        for(let i=0;i<completedTasks.length;i++){
                              loadingInitializer.push(false);
                        }
                        setLoading([...loadingInitializer])
-                       console.log(loading);
+                    
 for ( let i=0;i<completedTasks.length;i++){
   
   let time=(new Date(completedTasks[i].endDate).getTime()-new Date(completedTasks[i].startedDate).getTime())/1000;
 
-            filledObject.push({key:i,data:{name:completedTasks[i].Task,startedDate:completedTasks[i].startedDate,endDate:completedTasks[i].endDate,Progress:completedTasks[i].Progress,timeTaken:`${time/( 3600*24)} days`,
+            filledObject.push( {Task:completedTasks[i].Task,startedDate:completedTasks[i].startedDate,endDate:completedTasks[i].endDate,Progress:completedTasks[i].Progress,timeTaken:`${time/( 3600*24)} days`,
             
             splitButton:
             // <i class="pi pi-ellipsis-v" id={`edit${completedTasks[i].id}`} onClick={() => setVisible(true)}></i>
@@ -347,9 +358,11 @@ for ( let i=0;i<completedTasks.length;i++){
         //         </TabView>
         //     </OverlayPanel>
         // </div>
-                <Button label="Re-Assign" icon="pi pi-undo" onClick={( ) => selectedReAssign(completedTasks[i].id,i)}  ></Button>
+                <Button   icon="pi pi-undo" onClick={( ) => selectedReAssign(completedTasks[i].id,i)}  ></Button>
             
-            }})
+            })
+           
+
             
 
 }
@@ -371,11 +384,25 @@ for ( let i=0;i<completedTasks.length;i++){
     completedData.getTreeTableNodes().then((data) => setFinished(data));
 
 
-
+// for(let i=0;i<unCompletedTasks.length;i++){
+//     filledObject2.push(  {Id:unCompletedTasks[i].id,Task:unCompletedTasks[i].Task,Department:unCompletedTasks[i].Department,Priority:unCompletedTasks[i].Priority,Description:unCompletedTasks[i].Description,Deadline:unCompletedTasks[i].Deadline,startedDate:unCompletedTasks[i].startedDate,endDate:unCompletedTasks[i].endDate,Progress:unCompletedTasks[i].Progress,TaskList: 
+    
+//        <TreeSelect value={selectedNodeKeys[i]} filter onChange={(e) => isolateTasks(e ,i)} options={nodes}  showClear 
+//                 metaKeySelection={false} className="md:w-20rem w-full" selectionMode="checkbox" display="chip" placeholder="Select Tasks"></TreeSelect>
+    
+//     ,assign: <div className="card flex justify-content-center">
+//            <TreeSelect value={selectedNodeKeys2[i]} filter onChange={(e) => isolateDeveloper(e,i)} options={nodes2}  showClear 
+//                 metaKeySelection={false} className="md:w-20rem w-full"   display="chip" placeholder="Select Dev"></TreeSelect> 
+//         </div>,add:<i class="pi pi-plus"></i>} );
+// }
+//    setTaskUI2(filledObject2);
+   
  
-  }
+ 
+    }
+ 
     useEffect(()=>{
-     dispatch(tasksAPI());
+                dispatch(tasksAPI());
      dispatch(activeTasksAPI());
          
        let arr=[];
@@ -389,8 +416,7 @@ for ( let i=0;i<completedTasks.length;i++){
  
  showCompleted(Tasks);
 
-        
-    //    getTasks();
+           //    getTasks();
    NodeService.getTreeNodes().then((data) => {setNodes(data)
    let arr=[];
 for(let i=0;i<data.length;i++){
@@ -400,6 +426,8 @@ for(let i=0;i<data.length;i++){
       
       
    }); 
+    
+  
    
     
 NodeService2.getTreeNodes().then((data) => {setNodes2(data)
@@ -411,6 +439,11 @@ for(let i=0;i<data.length;i++){
       setSelectedNodeKeys2(arr);
         
 });
+            
+ 
+
+
+
  
 
     },[])
@@ -419,14 +452,19 @@ for(let i=0;i<data.length;i++){
         <div className="row position-relative">
         <Navbar   />
 
-        <div className="col-10 mx-auto  border sectionContainer" >
+        <div className="col-10 mx-auto  border sectionContainer " >
          
-        < QuickAccess page={"Create Task"}/>
-        <div className="   "   >
-             <div className="p-2  backColor "  >
+        < QuickAccess page={page}/>
+    
+             {/* <div className="p-2  backColor "  >
               <h3 className="text-center border rounded p-2 mb-2 ">Task List</h3>
+              </div> */}
+         
+ 
+ 
+ 
               
-                 <div className="     ">
+               
             <Toast ref={toast}></Toast>
             <ConfirmDialog
                 group="declarative"
@@ -441,15 +479,18 @@ for(let i=0;i<data.length;i++){
                 breakpoints={{ '1100px': '75vw', '960px': '100vw' }}
             />
              
-                 
+         
             
-        </div></div>
+        
            
-         <div className=" p-2 activeTaskTable   "  >
-             <div className="card">
-            <TabView>
+         <div className="      card "    >
+            <h2 className="text-center">Task List</h2>
+
+            <TabView  >
                 <TabPanel header="Active">
-                      <div className="border rounded backColor"   >
+
+                
+            <div className="border rounded backColor"   >
            <table className="col-12 text-center   deskTable"  >
                         <thead>
                            <th>Id</th>  
@@ -466,67 +507,125 @@ for(let i=0;i<data.length;i++){
                        
                         </thead>
                         <tbody className="tableBody">
-                          {Tasks?Tasks.filter(item0=>!item0.endDate).map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress" && it!=="Dev").map(key=><td className="  ">{item[key]}</td>)}<td className=" ">{activeTasks.filter(f2=>f2.id===item.id).length===1?"true":  <div className="card flex justify-content-center">
+                          {Tasks?Tasks.filter(item0=>!item0.endDate).map((item,index)=><tr className="my-2"  >{Object.keys(item).filter(it=>it!=="Progress" && it!=="Dev").map(key=><td className="  ">{item[key]}</td>)}<td className=" ">{activeTasks.filter(f2=>f2.id===item.id).length===1?"true":  
+                          <div className="card flex justify-content-center">
             <TreeSelect value={selectedNodeKeys[index]} filter onChange={(e) => isolateTasks(e ,index)} options={nodes}  showClear 
                 metaKeySelection={false} className="md:w-20rem w-full" selectionMode="checkbox" display="chip" placeholder="Select Tasks"></TreeSelect>
         </div>    }</td><td>{activeTasks.filter(f2=>f2.id===item.id).length===1? "true": <div className="card flex justify-content-center">
            <TreeSelect value={selectedNodeKeys2[index]} filter onChange={(e) => isolateDeveloper(e,index)} options={nodes2}  showClear 
                 metaKeySelection={false} className="md:w-20rem w-full"   display="chip" placeholder="Select Dev"></TreeSelect> 
-        </div>  }</td><td   className="     position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={( )=>handleTaskMove(index,"Desktop")}><i class="fi fi-tr-square-plus"></i> </span> } </div>   </td> </tr>):
-         <TreeTable value={fakeItems[0]} tableStyle={{ minWidth: '50rem' }}>
+        </div>  }</td><td   className="     position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={( )=>handleTaskMove(index,"Desktop")}><i class="fi fi-tr-square-plus"></i> </span> } </div>   </td> </tr>)
+      
+        :
+
+
+         <DataTable value={fakeItems[0]} tableStyle={{ minWidth: '50rem' }}>
                                       
-                                           <Column field="name" header="Id" expander></Column> 
-   <Column field="name" header="Task" expander></Column> 
-   <Column field="name" header="Department" expander></Column> 
-   <Column field="name" header="Priority" expander></Column> 
-   <Column field="name" header="Description" expander></Column> 
-   <Column field="name" header="Deadline" expander></Column> 
-   <Column field="name" header="Start Date" expander></Column> 
-   <Column field="name" header="Start Time" expander></Column> 
-   <Column field="name" header="Tasks List" expander></Column> 
-   <Column field="name" header="Assign" expander></Column> 
-   <Column field="name" header="Add" expander></Column> 
-                        </TreeTable>}
+                                           <Column field="name" header="Id"  body={<Skeleton/>}></Column> 
+                                            <Column field="name" header="Task"  body={<Skeleton/>}></Column> 
+                                            <Column field="name" header="Department"  body={<Skeleton/>}></Column> 
+                                            <Column field="name" header="Priority"  body={<Skeleton/>}></Column> 
+                                            <Column field="name" header="Description"  body={<Skeleton/>}></Column> 
+                                            <Column field="name" header="Deadline"  body={<Skeleton/>}></Column> 
+                                            <Column field="name" header="Start Date"  body={<Skeleton/>}></Column> 
+                                            <Column field="name" header="Start Time"  body={<Skeleton/>}></Column> 
+                                            <Column field="name" header="Tasks List"  body={<Skeleton/>}></Column> 
+                                            <Column field="name" header="Assign"  body={<Skeleton/>}></Column> 
+                                            <Column field="name" header="Add"  body={<Skeleton/>}></Column> 
+                                                                    </DataTable>}
 
                         </tbody>
                  
                 </table> 
+
+              
           
                 <div className="mobileTable"> {Tasks?Tasks.map((item,index)=><div className="my-2 "  >{Object.keys(item).filter(it=>it!=="Progress").map(key=><div className=" d-flex  align-items-center justify-content-between    ps-2"> <span className=" " >{key}</span><span className="col-8">{item[key]}</span></div>)}<div className="d-flex align-items-center  justify-content-between  ps-2 ">{activeTasks.filter(f2=>f2.id===item.id).length===1?"true":<select ><option value={"default"}>Select</option><option value={"WebDev1"}>WebDev1</option><option value={"WebDev2"}>WebDev2</option><option value={"WebDev3"}>WebDev3</option><option value={"WebDev4"}>WebDev4</option> </select> } <div   className="col-8 d-flex align-items-center justify-content-center   position-relative " > <div className="loaderContainer  "> {loader[index]? <div className="loader"> </div> :<span className="addButton "  onClick={()=>handleTaskMove(index,"mobile")} ><i class="fi fi-tr-square-plus"></i></span> } </div></div>   </div> </div>):""}</div>
                  
 
 
                 </div>
+                    
+                      <div className="mt-5  "><p>New UI comes here</p>
+
+                             {/* {TaskUI2.length>0?
+                             
+                              <DataTable value={TaskUI2} tableStyle={{ minWidth: '50rem' }}>
+                <Column field="Id" header="Id"></Column>
+                <Column field="Task" header="Task"></Column>
+                <Column field="Department" header="Department"></Column>
+                  <Column field="Priority" header="Priority"  ></Column> 
+                <Column field="Description" header="Description"  ></Column> 
+                <Column field="Deadline" header="Deadline"  ></Column> 
+                <Column field="startedDate" header="Start Date"  ></Column>                         
+                <Column field="TaskList" header="Tasks List"  ></Column> 
+                 <Column field="assign" header="Assign"  ></Column> 
+                <Column field="add" header="Add"  ></Column> 
+            </DataTable>
+                // <DataTable value={TaskUI2} tableStyle={{ minWidth: '50rem' }}>
+                                      
+                //                            <Column field="Id" header="Id"  ></Column> 
+                //                             <Column field="Task" header="Task"  ></Column> 
+                //                             <Column field="Department" header="Department"  ></Column> 
+                //                             <Column field="Priority" header="Priority"  ></Column> 
+                //                             <Column field="Description" header="Description"  ></Column> 
+                //                             <Column field="Deadline" header="Deadline"  ></Column> 
+                //                             <Column field="startedDate" header="Start Date"  ></Column> 
+                                           
+                //                             <Column field="TaskList" header="Tasks List"  ></Column> 
+                //                             <Column field="assign" header="Assign"  ></Column> 
+                //                             <Column field="add" header="Add"  ></Column> 
+                //                 </DataTable>
+                          :  <DataTable value={fakeItems[1]} className="p-datatable-striped">
+               <Column field="Id" header="Id"  body={<Skeleton/>}></Column> 
+                                            <Column field="Task" header="Task" body={<Skeleton/>} ></Column> 
+                                            <Column field="Department" header="Department"  body={<Skeleton/>}></Column> 
+                                            <Column field="Priority" header="Priority"  body={<Skeleton/>}></Column> 
+                                            <Column field="Description" header="Description"  body={<Skeleton/>}></Column> 
+                                            <Column field="Deadline" header="Deadline"  body={<Skeleton/>}></Column> 
+                                            <Column field="startedDate" header="Start Date"  body={<Skeleton/>}></Column> 
+                                           
+                                            <Column field="TaskList" header="Tasks List" body={<Skeleton/>} ></Column> 
+                                            <Column field="assign" header="Assign"  body={<Skeleton/>}></Column> 
+                                            <Column field="add" header="Add"  body={<Skeleton/>}></Column> 
+            </DataTable>} */}
+                      </div>
+                      
                 </TabPanel>
                 <TabPanel header="Completed">
-                     {finished.length>=1?<TreeTable value={finished} tableStyle={{ minWidth: '50rem' }}>
-                                        <Column field="name" header="Project" expander></Column>
+                <p>Note: This section is not functional at the moment but the data is accurate.</p>
+                          {finished.length>=1?<DataTable value={finished} tableStyle={{ minWidth: '50rem' }}>
+                                        <Column field="Task" header="Project"  ></Column>
                                         <Column field="startedDate" header="Start"></Column>
                                         <Column field="endDate" header="End"></Column>
                                         <Column field="timeTaken" header="Time"></Column>
-                                        <Column field="splitButton" header="Edit"  ></Column>
-                        </TreeTable>:   <div className="card">
+                                        <Column field="splitButton" header="Re-Assign"  ></Column>
+                        </DataTable>:   <div className="card">
             <DataTable value={fakeItems[1]} className="p-datatable-striped">
-                <Column field="code" header="Project" style={{ width: '25%' }} body={<Skeleton />}></Column>
-                <Column field="name" header="Date" style={{ width: '25%' }} body={<Skeleton />}></Column>
-                <Column field="category" header="Status" style={{ width: '25%' }} body={<Skeleton />}></Column>
-                <Column field="quantity" header="Edit" style={{ width: '25%' }} body={<Skeleton />}></Column>
+                <Column field="code" header="name"  body={<Skeleton />}></Column>
+                <Column field="name" header="startedDate"  body={<Skeleton />}></Column>
+                <Column field="category" header="endDate"  body={<Skeleton />}></Column>
+                <Column field="quantity" header="timeTaken"  body={<Skeleton />}></Column>
+                 <Column field="quantity" header="splitButton"  body={<Skeleton />}></Column>
             </DataTable>
         </div>}  
+                      
                 </TabPanel>
                
             </TabView>
-        </div>
+   
+
          
+            
            
              
          </div>
          <div className="col-lg-2  tlSVg" >
           <img src={organizing_projects_re} alt="svg" className=" img-fluid"></img></div>
        
+               
                 
-                 
-        </div>
+       
                  
         </div>
            

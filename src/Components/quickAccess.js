@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { time } from "../media";
 import {  userLogout } from "../redux/sessionHandler";
+import { Toast } from "primereact/toast";
 
  
  
@@ -15,6 +16,7 @@ import {  userLogout } from "../redux/sessionHandler";
 
 export function QuickAccess({page} ){
   const timeSound=useRef();
+  const toast=useRef(null);
 
 
        const user=useSelector(state=>state.user.value);
@@ -54,32 +56,32 @@ export function QuickAccess({page} ){
  async function handleSessionCloser(args){
 
  
-  if(args==="add"){
-    document.getElementById("sessionPopUp").classList.add("showMe");
+//   if(args==="add"){
+//     document.getElementById("sessionPopUp").classList.add("showMe");
  
-if (timeSound.current !== null) {
-  timeSound.current.play();
-}
-    let line=document.querySelector("#line");
+// if (timeSound.current !== null) {
+//   timeSound.current.play();
+// }
+//     let line=document.querySelector("#line");
  
      
-      let x=100;
+//       let x=100;
   
      
       
      
-      while(2){
-        --x;
-        line.style.width=`${x}%`;
+//       while(2){
+//         --x;
+//         line.style.width=`${x}%`;
        
-        await new Promise((resolve)=>setTimeout(()=>{resolve("This is for loading time")},60));
-        if(x===2){
-          document.getElementById("sessionPopUp").classList.remove("showMe");
-          // localStorage.setItem("sessionTime","false"); 
-          break;
-        }
+//         await new Promise((resolve)=>setTimeout(()=>{resolve("This is for loading time")},60));
+//         if(x===2){
+//           document.getElementById("sessionPopUp").classList.remove("showMe");
+//           // localStorage.setItem("sessionTime","false"); 
+//           break;
+//         }
      
-      }
+//       }
     
    
    
@@ -87,13 +89,13 @@ if (timeSound.current !== null) {
     
     
  
-  }
+//   }
   
-  else{
+//   else{
   
   
-    document.getElementById("sessionPopUp").classList.remove("showMe");
-  }
+//     document.getElementById("sessionPopUp").classList.remove("showMe");
+//   }
 
  }
          
@@ -103,7 +105,18 @@ if (timeSound.current !== null) {
 
   useEffect(()=>{
    
-    
+    document.onvisibilitychange = function() {
+  if (document.visibilityState === 'hidden') {
+       toast.current.show({ severity: "info", summary: "You looked away from the screen", detail: "", life: 5000,content:(props)=><div className="flex flex-column align-items-left" style={{ flex: '1' }}>
+            <div className="d-flex align-items-center gap-2">
+                 <i className="pi pi-info-circle"></i>
+                <div className="font-medium text-lg   text-900 " style={{fontSize:"1rem"}}>{props.message.summary}</div>
+            </div>
+       
+     
+        </div> });
+  }
+};
     
       let sectionContainer=document.querySelector(".sectionContainer");
       sectionContainer.addEventListener("scroll",()=>{
@@ -123,7 +136,7 @@ if (timeSound.current !== null) {
         }
       }) 
 
-    document.getElementById("logOut").addEventListener("click",handleLogOut);
+ 
     if(localStorage.getItem("lastlogin")!==null ){
           
  
@@ -143,6 +156,7 @@ if (timeSound.current !== null) {
       if( Math.abs(td)>=72000  && `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`===loginDate){
           
            localStorage.removeItem("lastlogin");
+           console.log("Exceeded the time limit");
          window.location.href="/G-Rank-Frontend";
           //  localStorage.removeItem("sessionTime");
         
@@ -151,17 +165,18 @@ if (timeSound.current !== null) {
      
         
       if(Math.abs(td)===60000     && `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`===loginDate){
+          console.log("Warning , close to the session time limit");
          
-       if(!document.getElementById("sessionPopUp").classList.contains("showMe")){
+      //  if(!document.getElementById("sessionPopUp").classList.contains("showMe")){
             
          
         
-          handleSessionCloser("add");
+      //     handleSessionCloser("add");
        
 
        
    
-       }
+      //  }
       
       }
     
@@ -170,7 +185,7 @@ if (timeSound.current !== null) {
 
     
  
-  })
+  },[])
   
  
     return (
@@ -178,7 +193,7 @@ if (timeSound.current !== null) {
      
 
       <div  id="quickAccess" >
-    
+    <Toast ref={toast} position="top-right" />
             <div className="d-flex align-items-center justify-content-between ">
               
               <div className="row  align-items-center  ">
@@ -190,7 +205,7 @@ if (timeSound.current !== null) {
               <div className="d-flex  align-items-center  justify-content-between ">
               <span id="menu" className=" rounded p-2  text-center  " data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop"><i className="fi fi-ts-bars-sort"></i></span>
                 
-              <div class="dropdown  ">
+              {/* <div class="dropdown  ">
                       <a className=" btn dropdown-toggle" href="#link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Quick Links
                       </a>
@@ -200,9 +215,9 @@ if (timeSound.current !== null) {
                         <li><a className="dropdown-item" href="#link">Another action</a></li>
                         <li><a className="dropdown-item" href="#link">Something else here</a></li>
                       </ul>
-                    </div> 
+                    </div>  */}
                      <span className="px-2 btn mx-lg-1  " id="notifications" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">{user.Notification?<i class="fi fi-tr-cowbell-circle-plus"></i>:<i className="fi fi-tr-cowbell"></i>}</span>
-                    <span className="px-2 btn mx-lg-1 " id="logOut"><i className="fi fi-rs-log-out"></i></span>
+                    <span className="px-2 btn mx-lg-1 " id="logOut" onClick={handleLogOut}><i className="fi fi-rs-log-out"></i></span>
 
 
               
@@ -213,7 +228,7 @@ if (timeSound.current !== null) {
 
             </div>
           
-      <div id="sessionPopUp" className="p-2  shadow rounded border  ">
+      {/* <div id="sessionPopUp" className="p-2  shadow rounded border  ">
       
         <div className="row">
         <span className="col-10  ">Your session time is ending soon...</span>
@@ -224,7 +239,7 @@ if (timeSound.current !== null) {
           <audio   ref={timeSound} src={time} type='audio'>
      
     </audio>
-      </div>
+      </div> */}
         
     
       </div>

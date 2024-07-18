@@ -16,11 +16,12 @@ import { DueTask } from "./dueTask.js"
 import { Todo } from "./todo.js"
 import { RequestForm } from "../compForCSM/requestform.js"
 
+
  
  
 
 export const TLRoutes=()=>{
-    return (<Routes>
+    return (<Routes >
          
         <Route path="/dueTask" element={ <DueTask  page={"dueTask"}/>}></Route>
  
@@ -38,6 +39,6 @@ export const TLRoutes=()=>{
         
    
         <Route path="/settings" element={ <Settings  page={"settings"}/>}></Route>
-        <Route path="/newTask" element={ <NewTask  />}></Route>
+        <Route path="/newTask" element={ <NewTask page={"Manage"} />}></Route>
     </Routes>)
 }
