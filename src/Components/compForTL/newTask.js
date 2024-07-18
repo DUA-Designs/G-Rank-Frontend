@@ -484,7 +484,7 @@ for(let i=0;i<data.length;i++){
         
            
          <div className="      card "    >
-            <h2 className="text-center">Task List</h2>
+            <h2 className="text-center mt-3">Task List</h2>
 
             <TabView  >
                 <TabPanel header="Active">
